@@ -1,0 +1,408 @@
+#ModalEventos{
+    //*argin-left: -300px;*/
+    justify-content: center;
+}
+
+.parpadea {  
+  animation-name: parpadeo;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+.parpadea2 {  
+  animation-name: parpadeo2;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  -webkit-animation-name:parpadeo2;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+@-moz-keyframes parpadeo{  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+   100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {  
+  0% { opacity: 1.0; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+@-moz-keyframes parpadeo2{  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo2 {  
+  0% { opacity: 1.0; }
+  50% { opacity: 0.0; }
+   100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo2 {  
+  0% { opacity: 1.0; }
+   50% { opacity: 0.0; }
+  100% { opacity: 1.0; }
+}
+/*Escondo precios enfermera*/
+#tr_total_nurse,#sub_nurse,#price_nurse{
+    display: none;
+}
+/************************/
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+.nurse_price,.nurse_sub,.nurse_tot{
+    display: none;
+}
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+#Login{
+    margin-bottom: 50px;
+}
+#btn-insertar{
+    background: #00945E;
+}
+#btn-modificar{
+    background: #00945E;
+}
+#todos{
+    background: #2F5491;
+    color: white;
+}
+@media only screen and (max-width: 600px){
+  html {
+/*min-height: 100%;*/
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+  background-image: url('../img/login-banner-fondo-21-enero_913px.png');
+  /*height: 100%;*/
+  overflow-y: scroll; 
+    overflow-x: auto;
+}
+    #ModalEventos,#ModalMateriales,.modal{
+    overflow-x: auto;
+    overflow-y: scroll; 
+
+}
+footer {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+}
+.botones{
+    margin-bottom: 12px;
+}
+.citado{
+    background: #ef8cf9;
+    color: white;
+}
+.citado:hover{
+    color: white;
+}
+.confirmado,#confirmarCita{
+    background: #57cbc0;
+    color: white;
+}
+.confirmado:hover,#confirmarCita:hover{
+    color: white;
+}
+.espera{
+    background: #EF4136;
+    color: white;
+}
+.ingreso{
+    background: #39B54A;
+    color: white;
+}
+.consulta{
+    background: #f0671f;
+    color: white;
+}
+.terminado{
+    background: #6D6E71;
+    color: white;
+}
+#actualizarU{
+    background: #00945E;
+}
+.fc-day-header{
+  background-color: #6D6E71;
+  color: #fff;
+}
+.fc-event-container span,.fc-title{
+    color: white; 
+    font-weight: bold;
+}
+.fc-view-container{
+    background-color: #f6f3f3;
+}
+.modal-header{
+  display: flex;
+  flex-direction: column;  
+  align-items:  center;
+  background-color: #6B1E74;
+  color: white;
+  font-weight: bold;
+}
+#bto{
+  border-bottom: 0px;
+}
+
+#tipo2{
+  margin-left:30%;
+
+}
+#insertarUser{
+  background-color: #00945E;
+}
+#generarIngreso:hover{
+    color: white;
+}
+.iniciar-btn{
+    background-color: #00945E;
+    color: white;
+    font-weight: bold;
+}
+#borrarCita{
+    color: white;
+}
+.footer-index{
+    background-color: #6D6E71;
+    height: 86px;
+    padding-top: 35px;
+}
+.footer-index  span{
+    margin-left: 38%;    
+    color: #ecebeb;
+}
+.footer-index span a{
+    font-weight: bold;
+    color: white;
+}
+#modal_h{
+  background-color: #6B1E74;
+  position: relative;
+}
+#modal_h img{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.fc-unthemed td{
+  border: 1px solid #6D6E71;
+}
+header img{
+    width: 100%;
+}
+.btn-successA{
+    background-color: #0c6f0f;
+    color: white;
+}
+#calendario_e,#calendario_g,#calendario_c,#calendario_t,#calendario_cf{
+    display: none;
+}
+
+
+.modal-content{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+
+#nav{
+  display: flex;    
+  background-color: #741181;  
+}
+.nav-ul{
+    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.nav > li:first-child{
+    color: white;
+}
+
+header{
+  margin-bottom: 20px;
+}
+ul{  
+  flex-direction: row;  
+  align-content: center;
+}
+ul > li:first-child {
+  margin-left: 20px;
+}
+
+nav{
+  width: 250px;
+}
+li > img{
+  margin: 5px 5px 0 0;
+  width: 45px;
+  height: 45px;
+}
+li > a{
+  color: white;
+  margin-top: 4px;
+}
+li > p{
+  margin-top: 12px;
+  color: white;
+}
+li > button{
+  margin:5px;
+}
+#tabla_paciente{
+    display: none;
+}
+.tdprodt{
+    display: none;
+}
+#text_1:hover{
+    color: #e84855; !important
+}
+#text_1{
+    color: #bd4089;
+    margin-left: 80%;
+}
+#header_recep{
+    width: 100%; 
+    background-color: #2f323a;
+}
+.error{
+    background-color: #E74F4F;
+    position: absolute;
+    top: 0;
+    padding: 10px 0 ;
+    border-radius:  0 0 5px 5px;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    display: none;
+}
+#ul_inicio{
+    background-color: #D1C1D5;
+    margin-top: 1.6%;
+    margin-left: -220px;
+}
+
+#ul_recep{
+    flex-direction: row;
+  margin-left: 40%;
+}
+.li_recep{
+  background-color: #681b68;
+  margin-top: 1%;
+}
+.a_recep:hover{
+    background-color: white
+}
+#td_thead{
+
+    border: solid 1px; 
+    border-color: black;
+    text-align: center;
+}
+#myModal1{
+  width: 40%;
+}
+/*#table_recep{
+    width: auto;
+    margin-left:19.5%;
+    margin-right: 19.5%;
+}*/
+#div_table{
+  width:auto;
+  margin-left: 19.5%;
+  margin-right: 17%;
+}
+#modal-cont{
+  width: auto;
+  background-color: #f46197;
+}
+#myModal{
+  width: 50%;
+  margin-left: 30%;
+  margin-top: 10%;
+  
+}
+.fc-content{
+    cursor: pointer;
+}
+
+
+#input_paciente{
+  display:block;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;  
+}
+form{
+	margin: 0 auto;
+	width: 500px;
+}
+
+
+#wrapper {
+  padding-left: 0;
+}
+
+
+.sesion{
+    color: white;
+}
+
+/* Edit Below to Customize Widths > 768px */
+@media (max-width:1650px) {
+  body{
+    overflow-x: scroll;
+  }
+  aside{
+    width: 100%;
+    display: flex;    
+  }
+  ul{
+    margin-left: 50px;    
+    width: 100%;
+    flex-direction: row;
+  }
+ 
+  
+
+}
