@@ -50,7 +50,7 @@
     <div class="row botones">
           <div class="col-12">
               <button id="todos" class="btn">Todos</button>
-              <button id="ingreso" class="btn citado">Citado</button>
+              <button id="ingreso" class="btn citado"> Citado</button>
             <button class="btn confirmado">Confirmado</button>
             <button id="espera" class="btn btn-successA">Espera</button>
             <!--button class="btn ingreso">Ingreso</button>-->
@@ -394,7 +394,6 @@
                       $("#modificarCita").html("Finalizada")
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
-
                     }
                 },               
                 eventDrop: function(calEvent){
@@ -1075,44 +1074,46 @@
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
 
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#input_color').val(calEvent.color);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-                   
-                   if($('#input_status').val() == 'Espera'){
+                    }
+                },               
+                eventDrop: function(calEvent){
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus);                   
+                    $('#input_servicio').val(calEvent.servicio);                   
+                    $('#input_cubiculo').val(calEvent.cubiculo);
+                    
+                    var FechaHora = calEvent.start.format().split("T");            
+                    
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);
+                    
+                    var FechaHoraFin = calEvent.end.format().split("T");
+                    
+                    
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);                                     
+                },
+                defaultView: 'agendaDay'
+            });
+                    
+                    if($('#input_status').val() == 'Espera'){
                       $("#button_materiales").prop("disabled",true)                      
                       $("#guarda_materiales").prop("disabled",true)
                       $("#modificarCita").prop("disabled",false)
+                      $("#modificar_cita").prop("disabled",true)
                       $("#products_table").hide()
                       $("#modificarCita").html("Iniciar Cita");
                    }else if($('#input_status').val() == 'Consulta'){                      
                       $("#button_materiales").prop("disabled",false)                      
                       $("#guarda_materiales").prop("disabled",false)                      
-                      $("#modificarCita").prop("disabled",true)  
+                      $("#modificarCita").prop("disabled",true) 
+                      $("#modificar_cita").prop("disabled",false) 
                       $("#products_table").show()
                       $("#modificarCita").html("Iniciar Cita");
                    }else if($('#input_status').val() == 'Generado'){
@@ -1120,18 +1121,21 @@
                       $("#button_materiales").prop("disabled",true)                      
                       $("#guarda_materiales").prop("disabled",true)
                       $("#modificarCita").prop("disabled",true)
+                      $("#modificar_cita").prop("disabled",true)
                       $("#modificarCita").html("Iniciar Cita");
                    }else if($('#input_status').val() == 'Confirmado'){
                       $("#products_table").hide()
                       $("#button_materiales").prop("disabled",true)                      
                       $("#guarda_materiales").prop("disabled",true)
                       $("#modificarCita").prop("disabled",true) 
+                      $("#modificar_cita").prop("disabled",true)
                       $("#modificarCita").html("Iniciar Cita");
                   }else if($('#input_status').val() == 'Terminada'){
                       $("#products_table").show()
                       $("#button_materiales").prop("disabled",true)                      
                       $("#guarda_materiales").prop("disabled",true)
-                      $("#modificarCita").prop("disabled",true);                       
+                      $("#modificarCita").prop("disabled",true); 
+                      $("#modificar_cita").prop("disabled",true)                      
                       $("#modificarCita").html("Finalizada");                       
                   }
               },               
@@ -2186,15 +2190,13 @@
                   </div>
               </div>                       
           <div class="form-row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-md-6">
                     <span>Servicio: </span>
                     <input class="form-control" type="text" name="servicio" id="input_servicio" readonly>
                     
                     <!--<input type="text" name="servicio" value="" class="form-control" placeholder="Servicio" id="input_servicio">-->
-              </div>             
-          </div>
-          <div class="form-row">
-              <div class="form-group col-md-12">
+              </div>       
+              <div class="form-group col-md-6">
                     <span>Cubículo: </span>
                     <select class="form-control" name="cubiculo" id="input_cubiculo" placeholder="Cubículo">
                         <option>1</option>
@@ -2248,14 +2250,14 @@
               </div>
           </div>
           <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-8">
                   <button class="btn btn-primary" id="button_materiales"> Materiales</button>   
                   <button class="btn btn-primary" id="guarda_materiales"> Guardar Materiales</button>
                   <button class="btn btn-primary" id="modificar_cita">Modificar Cita</button>                                           
                   <!--<button type="button" class="btn btn-danger" id="TerminarCita">Terminar Consulta</button>-->
                   
               </div>
-              <div class="form-group col-md-6" style="display:flex;justify-content:flex-end;">
+              <div class="form-group col-md-4" style="display:flex;justify-content:flex-end;">
                   <button type="button" class="btn btn-secondary" id="canc">Cancelar</button>
               </div>
           </div>
