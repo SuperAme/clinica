@@ -8,7 +8,7 @@
       echo "<tr><td>Nombre: </td><td><input type='text' value='$result[3]' class='form-control' placeholder='Nombre' id='input_nombre'></td>";
       echo "<tr><td>Nombre usuario: </td><td><input type='text' value='$result[1]' class='form-control' placeholder='Usuario' id='input_usuario'></td>";
       echo "<tr><td>Contraseña: </td><td><input type='text' value='$result[2]' class='form-control' placeholder='Contraseña' id='input_contra'></td>";
-      echo "<tr><td>Comisión: </td><td><input type='text' value='$result[18]' class='form-control' placeholder='Comisión...' id='input_comision'></td>";
+      echo "<tr><td>Comisión: </td><td><input type='number' value='$result[18]' class='form-control' placeholder='Comisión...' id='input_comision' min='0' max='100'></td>";
       switch ($result[10]){
           case A:
               echo "<tr><td>Tipo: </td><td><select name='combobox_cve' id='input_tipo' class='form-control'><option value='A' selected>Administrador</option><option value='R'>Recepcion</option><option value='E'>Enfermera</option><option value='D'>Doctor</option><option value='S'>Residente</option></select></td></table>";

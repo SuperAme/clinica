@@ -98,119 +98,119 @@
             }
 
             var todaysDate = new Date();
-            $("#todos").click(function(){
-               $("#calendario_e").hide()
-               $("#calendario_g").hide()
-               $("#calendario_c").hide()
-               $("#calendario_t").hide()
-               $("#calendario_cf").hide()
-               $("#calendario").toggle(1000);
-           });
-           $("#espera").click(function(){
-               $("#calendario").hide();
-               $("#calendario_g").hide()
-               $("#calendario_c").hide()
-               $("#calendario_t").hide()
-               $("#calendario_cf").hide()
-               $("#calendario_e").toggle(1000);
-           });
-           $("#ingreso").click(function(){
-               $("#calendario").hide()
-               $("#calendario_e").hide()
-               $("#calendario_c").hide()
-               $("#calendario_t").hide()
-               $("#calendario_cf").hide()
-               $("#calendario_g").toggle(1000);
-           });
-           $(".consulta").click(function(){
-               $("#calendario").hide()
-               $("#calendario_g").hide()
-               $("#calendario_e").hide()
-               $("#calendario_t").hide()
-               $("#calendario_cf").hide()
-               $("#calendario_c").toggle(1000);
-           });
-           $(".terminado").click(function(){
-               $("#calendario").hide()
-               $("#calendario_g").hide()
-               $("#calendario_e").hide()
-               $("#calendario_c").hide()
-               $("#calendario_cf").hide()
-               $("#calendario_t").toggle(1000);
-           });
-           $(".confirmado").click(function(){
-               $("#calendario").hide()
-               $("#calendario_g").hide()
-               $("#calendario_e").hide()
-               $("#calendario_c").hide()
-               $("#calendario_t").hide()
-               $("#calendario_cf").toggle(1000);
-           });
-           $('#calendario').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){ 
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+        $("#todos").click(function(){
+            $("#calendario_e").hide()
+            $("#calendario_g").hide()
+            $("#calendario_c").hide()
+            $("#calendario_t").hide()
+            $("#calendario_cf").hide()
+            $("#calendario").toggle(1000);
+        });
+        $("#espera").click(function(){
+            $("#calendario").hide();
+            $("#calendario_g").hide()
+            $("#calendario_c").hide()
+            $("#calendario_t").hide()
+            $("#calendario_cf").hide()
+            $("#calendario_e").toggle(1000);
+        });
+        $("#ingreso").click(function(){
+            $("#calendario").hide()
+            $("#calendario_e").hide()
+            $("#calendario_c").hide()
+            $("#calendario_t").hide()
+            $("#calendario_cf").hide()
+            $("#calendario_g").toggle(1000);
+        });
+        $(".consulta").click(function(){
+            $("#calendario").hide()
+            $("#calendario_g").hide()
+            $("#calendario_e").hide()
+            $("#calendario_t").hide()
+            $("#calendario_cf").hide()
+            $("#calendario_c").toggle(1000);
+        });
+        $(".terminado").click(function(){
+            $("#calendario").hide()
+            $("#calendario_g").hide()
+            $("#calendario_e").hide()
+            $("#calendario_c").hide()
+            $("#calendario_cf").hide()
+            $("#calendario_t").toggle(1000);
+        });
+        $(".confirmado").click(function(){
+            $("#calendario").hide()
+            $("#calendario_g").hide()
+            $("#calendario_e").hide()
+            $("#calendario_c").hide()
+            $("#calendario_t").hide()
+            $("#calendario_cf").toggle(1000);
+        });
+        $('#calendario').fullCalendar({
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){ 
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){                       
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }
+                    if(new Date(datClk)< new Date(fecha1)){                       
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",true)
+                        $("#borrarCita").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        limpiarFormulario()
+                        $('#input_fecha').val(date.format())
+                        var d = new Date()
+                        var hI = d.getHours()+1
+                        var hF = d.getHours()+2
+                        var mI = '00';                                         
+                        $("#input_horaini").val(hI+':'+mI)                       
+                        $("#input_horafin").val(hF+':'+mI)           
+                        $("#ModalEventos").modal()
+                    }else{
+                        document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        $("#insertarCita").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#generarIngreso").prop("disabled",true)                       
+                        $("#modificarCita").prop("disabled",true)
+                        $("#borrarCita").prop("disabled",true)                       
+                        limpiarFormulario()
+                        $('#input_fecha').val(date.format())
+                        var d = new Date()
+                        var hI = d.getHours()+1
+                        var hF = d.getHours()+2
+                        var mI = '00';                                         
+                        $("#input_horaini").val(hI+':'+mI)                       
+                        $("#input_horafin").val(hF+':'+mI)           
+                        $("#ModalEventos").modal()
+                    }
                     
-               },
-               events:'/clinica/eventos.php',
-               timeFormat: 'HH:mm',
-               eventRender: function(event, element) {
-                   var s = "";
-                   try{
-                   var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
-                   var even = new Date(event.start._i)
+                },
+                events:'/clinica/eventos.php',
+                timeFormat: 'HH:mm',
+                eventRender: function(event, element) {
+                    var s = "";
+                    try{
+                    var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
+                    var even = new Date(event.start._i)
                    //eventFechaHora = event.start._i.split(" ")
                    
                     eventFechaH = event.start._i.split(" ")[0] + " " +event.tiempo_espera
@@ -274,257 +274,257 @@
                     
                   }
                 },
-               eventClick: function(calEvent,jsEvent,view){
-                   var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }               
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+            eventClick: function(calEvent,jsEvent,view){
+                var date = new Date()
+                var today = date.getDate()                   
+                $('#input_id').val(calEvent.id)
+                $('#input_color').val(calEvent.color)
+                $('#tituloEvento').html(calEvent.servicio)
+                $('#input_paciente').val(calEvent.title)                  
+                $('#input_doctor').val(calEvent.doctor)                   
+                $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                $('#input_enfermera').val(calEvent.enfermera)                  
+                $('#input_status').val(calEvent.estatus)
+                $('#input_rs').val(calEvent.razon_social)
+                var status = calEvent.estatus
+                $('#input_servicio').val(calEvent.servicio)                   
+                $('#input_cubiculo').val(calEvent.cubiculo)
+                FechaHora = calEvent.start._i.split(" ")
+                FechaHoraFin = calEvent.end._i.split(" ")
+                $('#input_fecha').val(FechaHora[0])                
+                $('#input_horaini').val(FechaHora[1])                  
+                $('#input_horafin').val(FechaHoraFin[1])                   
+                $("#ModalEventos").modal()
+                var today1 = FechaHora[0] 
+                var todaySplit = today1.split("-")
+                var todayArray = todaySplit[2]
+                
+                if(today == todayArray) {
+                    console.log(status)                          
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false)                           
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }else{
+                    console.log(status)
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }               
+            },
+            editable:true,
+            eventDrop: function(calEvent,delta,revertFunc){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var FechaDia = calEvent.start.format().split("T")
+                var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                var date = new Date()
+                var year = date.getFullYear()
+                var month = months[date.getMonth()]
+                var day = date.getDate()
+                if (day < 10){
+                    var day = "0"+day
+                }
+                
+                var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           /*Calendario con citas en espera*/           
-           $('#calendario_e').fullCalendar({               
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+                if(FechaDiaA < fecha){
+                    alert("ERROR! No puedes mover citas en días anteriores")
+                    revertFunc()
+                }else{
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus)                  
+                    $('#input_servicio').val(calEvent.servicio)                  
+                    $('#input_cubiculo').val(calEvent.cubiculo)                   
+                    var FechaHora = calEvent.start.format().split("T")                  
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);                                      
+                    var FechaHoraFin = calEvent.end.format().split("T");                   
+                    $('#input_horafin').val(FechaHoraFin[1]);                   
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);
+                }         
+            }
+        });
+        
+        /*Calendario con citas en espera*/           
+        $('#calendario_e').fullCalendar({               
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }                 
-               },
-               events:'/clinica/eventos_espera.php',
-               timeFormat: 'HH:mm',
-               eventRender: function(event, element) {
-                   var s = "";
-                   try{
-                   var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
-                   var even = new Date(event.start._i)
+                if(new Date(datClk)< new Date(fecha1)){
+                    document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#generarIngreso").prop("disabled",true)
+                    $("#insertarCita").prop("disabled",true)
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)
+                    $("#confirmarCita").prop("disabled",true)
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }else{
+                    document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#insertarCita").prop("disabled",false)
+                    $("#confirmarCita").prop("disabled",true)
+                    $("#generarIngreso").prop("disabled",true)                       
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)                       
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }                 
+            },
+            events:'/clinica/eventos_espera.php',
+            timeFormat: 'HH:mm',
+            eventRender: function(event, element) {
+                var s = "";
+                try{
+                var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
+                var even = new Date(event.start._i)
                    //eventFechaHora = event.start._i.split(" ")
                    
                     eventFechaH = event.start._i.split(" ")[0] + " " +event.tiempo_espera
@@ -588,260 +588,260 @@
                     
                   }
                 },
-               eventClick: function(calEvent,jsEvent,view){
-                   var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }
-                   
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+            eventClick: function(calEvent,jsEvent,view){
+                var date = new Date()
+                var today = date.getDate()                   
+                $('#input_id').val(calEvent.id)
+                $('#input_color').val(calEvent.color)
+                $('#tituloEvento').html(calEvent.servicio)
+                $('#input_paciente').val(calEvent.title)                  
+                $('#input_doctor').val(calEvent.doctor)                   
+                $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                $('#input_enfermera').val(calEvent.enfermera)                  
+                $('#input_status').val(calEvent.estatus)
+                $('#input_rs').val(calEvent.razon_social)
+                var status = calEvent.estatus
+                $('#input_servicio').val(calEvent.servicio)                   
+                $('#input_cubiculo').val(calEvent.cubiculo)
+                FechaHora = calEvent.start._i.split(" ")
+                FechaHoraFin = calEvent.end._i.split(" ")
+                $('#input_fecha').val(FechaHora[0])                
+                $('#input_horaini').val(FechaHora[1])                  
+                $('#input_horafin').val(FechaHoraFin[1])                   
+                $("#ModalEventos").modal()
+                var today1 = FechaHora[0] 
+                var todaySplit = today1.split("-")
+                var todayArray = todaySplit[2]
+                
+                if(today == todayArray) {
+                    console.log(status)                          
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false)                           
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }else{
+                    console.log(status)
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }
+                
+            },
+            editable:true,
+            eventDrop: function(calEvent,delta,revertFunc){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var FechaDia = calEvent.start.format().split("T")
+                var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                var date = new Date()
+                var year = date.getFullYear()
+                var month = months[date.getMonth()]
+                var day = date.getDate()
+                if (day < 10){
+                    var day = "0"+day
+                }
+                
+                var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           /*Calendario con citas en Ingreso*/
-           
-           $('#calendario_g').fullCalendar({               
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+                if(FechaDiaA < fecha){
+                    alert("ERROR! No puedes mover citas en días anteriores")
+                    revertFunc()
+                }else{
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus)                  
+                    $('#input_servicio').val(calEvent.servicio)                  
+                    $('#input_cubiculo').val(calEvent.cubiculo)                   
+                    var FechaHora = calEvent.start.format().split("T")                  
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);                                      
+                    var FechaHoraFin = calEvent.end.format().split("T");                   
+                    $('#input_horafin').val(FechaHoraFin[1]);                   
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);
+                }         
+            }
+        });
+        
+        /*Calendario con citas en Ingreso*/
+        
+        $('#calendario_g').fullCalendar({               
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }                  
-               },
-               events:'/clinica/eventos_ingreso.php',
-               timeFormat: 'HH:mm',
-               eventRender: function(event, element) {
-                   var s = "";
-                   try{
-                   var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
-                   var even = new Date(event.start._i)
-                   //eventFechaHora = event.start._i.split(" ")
+                if(new Date(datClk)< new Date(fecha1)){
+                    document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#generarIngreso").prop("disabled",true)
+                    $("#insertarCita").prop("disabled",true)
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)
+                    $("#confirmarCita").prop("disabled",true)
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }else{
+                    document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#insertarCita").prop("disabled",false)
+                    $("#confirmarCita").prop("disabled",true)
+                    $("#generarIngreso").prop("disabled",true)                       
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)                       
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }                  
+            },
+            events:'/clinica/eventos_ingreso.php',
+            timeFormat: 'HH:mm',
+            eventRender: function(event, element) {
+                var s = "";
+                try{
+                var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
+                var even = new Date(event.start._i)
+                //eventFechaHora = event.start._i.split(" ")
                    
                     eventFechaH = event.start._i.split(" ")[0] + " " +event.tiempo_espera
                     eventFechaHora = eventFechaH.split(" ")
@@ -906,248 +906,248 @@
                 },
                eventClick: function(calEvent,jsEvent,view){
                     var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }
-                   
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+                var today = date.getDate()                   
+                $('#input_id').val(calEvent.id)
+                $('#input_color').val(calEvent.color)
+                $('#tituloEvento').html(calEvent.servicio)
+                $('#input_paciente').val(calEvent.title)                  
+                $('#input_doctor').val(calEvent.doctor)                   
+                $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                $('#input_enfermera').val(calEvent.enfermera)                  
+                $('#input_status').val(calEvent.estatus)
+                $('#input_rs').val(calEvent.razon_social)
+                var status = calEvent.estatus
+                $('#input_servicio').val(calEvent.servicio)                   
+                $('#input_cubiculo').val(calEvent.cubiculo)
+                FechaHora = calEvent.start._i.split(" ")
+                FechaHoraFin = calEvent.end._i.split(" ")
+                $('#input_fecha').val(FechaHora[0])                
+                $('#input_horaini').val(FechaHora[1])                  
+                $('#input_horafin').val(FechaHoraFin[1])                   
+                $("#ModalEventos").modal()
+                var today1 = FechaHora[0] 
+                var todaySplit = today1.split("-")
+                var todayArray = todaySplit[2]
+                
+                if(today == todayArray) {
+                    console.log(status)                          
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false)                           
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }else{
+                    console.log(status)
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }
+                
+            },
+            editable:true,
+            eventDrop: function(calEvent,delta,revertFunc){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var FechaDia = calEvent.start.format().split("T")
+                var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                var date = new Date()
+                var year = date.getFullYear()
+                var month = months[date.getMonth()]
+                var day = date.getDate()
+                if (day < 10){
+                    var day = "0"+day
+                }
+                
+                var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           /*Calendario con citas estatus confirmado*/
-           $('#calendario_cf').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){ 
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+                if(FechaDiaA < fecha){
+                    alert("ERROR! No puedes mover citas en días anteriores")
+                    revertFunc()
+                }else{
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus)                  
+                    $('#input_servicio').val(calEvent.servicio)                  
+                    $('#input_cubiculo').val(calEvent.cubiculo)                   
+                    var FechaHora = calEvent.start.format().split("T")                  
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);                                      
+                    var FechaHoraFin = calEvent.end.format().split("T");                   
+                    $('#input_horafin').val(FechaHoraFin[1]);                   
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);
+                }         
+            }
+        });
+        
+        /*Calendario con citas estatus confirmado*/
+        $('#calendario_cf').fullCalendar({
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){ 
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }
+                if(new Date(datClk)< new Date(fecha1)){
+                    document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#generarIngreso").prop("disabled",true)
+                    $("#insertarCita").prop("disabled",true)
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)
+                    $("#confirmarCita").prop("disabled",true)
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }else{
+                    document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#insertarCita").prop("disabled",false)
+                    $("#confirmarCita").prop("disabled",true)
+                    $("#generarIngreso").prop("disabled",true)                       
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)                       
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }
                     
                },
                events:'/clinica/eventos_confirmado.php',
@@ -1222,256 +1222,256 @@
                 },
                eventClick: function(calEvent,jsEvent,view){
                     var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }              
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+                var today = date.getDate()                   
+                $('#input_id').val(calEvent.id)
+                $('#input_color').val(calEvent.color)
+                $('#tituloEvento').html(calEvent.servicio)
+                $('#input_paciente').val(calEvent.title)                  
+                $('#input_doctor').val(calEvent.doctor)                   
+                $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                $('#input_enfermera').val(calEvent.enfermera)                  
+                $('#input_status').val(calEvent.estatus)
+                $('#input_rs').val(calEvent.razon_social)
+                var status = calEvent.estatus
+                $('#input_servicio').val(calEvent.servicio)                   
+                $('#input_cubiculo').val(calEvent.cubiculo)
+                FechaHora = calEvent.start._i.split(" ")
+                FechaHoraFin = calEvent.end._i.split(" ")
+                $('#input_fecha').val(FechaHora[0])                
+                $('#input_horaini').val(FechaHora[1])                  
+                $('#input_horafin').val(FechaHoraFin[1])                   
+                $("#ModalEventos").modal()
+                var today1 = FechaHora[0] 
+                var todaySplit = today1.split("-")
+                var todayArray = todaySplit[2]
+                
+                if(today == todayArray) {
+                    console.log(status)                          
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false)                           
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }else{
+                    console.log(status)
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }              
+            },
+            editable:true,
+            eventDrop: function(calEvent,delta,revertFunc){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var FechaDia = calEvent.start.format().split("T")
+                var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                var date = new Date()
+                var year = date.getFullYear()
+                var month = months[date.getMonth()]
+                var day = date.getDate()
+                if (day < 10){
+                    var day = "0"+day
+                }
+                
+                var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           /*Calendario con citas en consulta*/
-           
-           $('#calendario_c').fullCalendar({               
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+                if(FechaDiaA < fecha){
+                    alert("ERROR! No puedes mover citas en días anteriores")
+                    revertFunc()
+                }else{
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus)                  
+                    $('#input_servicio').val(calEvent.servicio)                  
+                    $('#input_cubiculo').val(calEvent.cubiculo)                   
+                    var FechaHora = calEvent.start.format().split("T")                  
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);                                      
+                    var FechaHoraFin = calEvent.end.format().split("T");                   
+                    $('#input_horafin').val(FechaHoraFin[1]);                   
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);
+                }         
+            }
+        });
+        
+        /*Calendario con citas en consulta*/
+        
+        $('#calendario_c').fullCalendar({               
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }                 
-               },
-               events:'/clinica/eventos_consulta.php',
-               timeFormat: 'HH:mm',
-               eventRender: function(event, element) {
-                   var s = "";
-                   try{
-                   var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
-                   var even = new Date(event.start._i)
+                if(new Date(datClk)< new Date(fecha1)){
+                    document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#generarIngreso").prop("disabled",true)
+                    $("#insertarCita").prop("disabled",true)
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)
+                    $("#confirmarCita").prop("disabled",true)
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }else{
+                    document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#insertarCita").prop("disabled",false)
+                    $("#confirmarCita").prop("disabled",true)
+                    $("#generarIngreso").prop("disabled",true)                       
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)                       
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }                 
+            },
+            events:'/clinica/eventos_consulta.php',
+            timeFormat: 'HH:mm',
+            eventRender: function(event, element) {
+                var s = "";
+                try{
+                var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
+                var even = new Date(event.start._i)
                    //eventFechaHora = event.start._i.split(" ")
                    
                     eventFechaH = event.start._i.split(" ")[0] + " " +event.tiempo_espera
@@ -1537,257 +1537,257 @@
                 },
                eventClick: function(calEvent,jsEvent,view){
                     var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }
-                   
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+                var today = date.getDate()                   
+                $('#input_id').val(calEvent.id)
+                $('#input_color').val(calEvent.color)
+                $('#tituloEvento').html(calEvent.servicio)
+                $('#input_paciente').val(calEvent.title)                  
+                $('#input_doctor').val(calEvent.doctor)                   
+                $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                $('#input_enfermera').val(calEvent.enfermera)                  
+                $('#input_status').val(calEvent.estatus)
+                $('#input_rs').val(calEvent.razon_social)
+                var status = calEvent.estatus
+                $('#input_servicio').val(calEvent.servicio)                   
+                $('#input_cubiculo').val(calEvent.cubiculo)
+                FechaHora = calEvent.start._i.split(" ")
+                FechaHoraFin = calEvent.end._i.split(" ")
+                $('#input_fecha').val(FechaHora[0])                
+                $('#input_horaini').val(FechaHora[1])                  
+                $('#input_horafin').val(FechaHoraFin[1])                   
+                $("#ModalEventos").modal()
+                var today1 = FechaHora[0] 
+                var todaySplit = today1.split("-")
+                var todayArray = todaySplit[2]
+                
+                if(today == todayArray) {
+                    console.log(status)                          
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false)                           
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",false)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }else{
+                    console.log(status)
+                    if($('#input_status').val() == 'Generado'){
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",false)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Confirmado') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }else if($('#input_status').val() == 'Espera') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Consulta') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    } else if($('#input_status').val() == 'Terminada') {
+                        document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                        document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                        document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                        $("#generarIngreso").prop("disabled",true)
+                        $("#confirmarCita").prop("disabled",true)
+                        $("#insertarCita").prop("disabled",true)
+                        $("#modificarCita").prop("disabled",false)
+                        $("#borrarCita").prop("disabled",false) 
+                    }
+                }
+                
+            },
+            editable:true,
+            eventDrop: function(calEvent,delta,revertFunc){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var FechaDia = calEvent.start.format().split("T")
+                var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                var date = new Date()
+                var year = date.getFullYear()
+                var month = months[date.getMonth()]
+                var day = date.getDate()
+                if (day < 10){
+                    var day = "0"+day
+                }
+                
+                var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           /*Calendario con citas en terminado*/
-           
-           $('#calendario_t').fullCalendar({               
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'month, agendaWeek, agendaDay'
-               },              
-               dayClick:function(date,jsEvent,view){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var datClk = date.format()
-                   var fecha = new Date();
-                   var año = fecha.getFullYear()
-                   var mes = months[fecha.getMonth()]
-                   var dia = fecha.getDate()
-                   var fecha1 = año+"-"+mes+"-"+dia           
+                if(FechaDiaA < fecha){
+                    alert("ERROR! No puedes mover citas en días anteriores")
+                    revertFunc()
+                }else{
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus)                  
+                    $('#input_servicio').val(calEvent.servicio)                  
+                    $('#input_cubiculo').val(calEvent.cubiculo)                   
+                    var FechaHora = calEvent.start.format().split("T")                  
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);                                      
+                    var FechaHoraFin = calEvent.end.format().split("T");                   
+                    $('#input_horafin').val(FechaHoraFin[1]);                   
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);
+                }         
+            }
+        });
+        
+        /*Calendario con citas en terminado*/
+        
+        $('#calendario_t').fullCalendar({               
+            header:{
+                left:'prev,today,next',
+                center: 'title',
+                right: 'month, agendaWeek, agendaDay'
+            },              
+            dayClick:function(date,jsEvent,view){
+                months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                var datClk = date.format()
+                var fecha = new Date();
+                var año = fecha.getFullYear()
+                var mes = months[fecha.getMonth()]
+                var dia = fecha.getDate()
+                var fecha1 = año+"-"+mes+"-"+dia           
                    //var fechaSplit = fecha.split("T")
-                   if(new Date(datClk)< new Date(fecha1)){
-                       document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#generarIngreso").prop("disabled",true)
-                       $("#insertarCita").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)
-                       $("#confirmarCita").prop("disabled",true)
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }else{
-                       document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
-                       document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                       $("#insertarCita").prop("disabled",false)
-                       $("#confirmarCita").prop("disabled",true)
-                       $("#generarIngreso").prop("disabled",true)                       
-                       $("#modificarCita").prop("disabled",true)
-                       $("#borrarCita").prop("disabled",true)                       
-                       limpiarFormulario()
-                       $('#input_fecha').val(date.format())
-                       var d = new Date()
-                       var hI = d.getHours()+1
-                       var hF = d.getHours()+2
-                       var mI = '00';                                         
-                       $("#input_horaini").val(hI+':'+mI)                       
-                       $("#input_horafin").val(hF+':'+mI)           
-                       $("#ModalEventos").modal()
-                   }                  
-               },
-               events:'/clinica/eventos_terminado.php',
-               timeFormat: 'HH:mm',
-               eventRender: function(event, element) {
-                   var s = "";
-                   try{
-                   var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
-                   var even = new Date(event.start._i)
+                if(new Date(datClk)< new Date(fecha1)){
+                    document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#generarIngreso").prop("disabled",true)
+                    $("#insertarCita").prop("disabled",true)
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)
+                    $("#confirmarCita").prop("disabled",true)
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }else{
+                    document.getElementById("insertarCita").setAttribute("style","background:#ef8cf9;border:1px solid #ef8cf9;")
+                    document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("modificarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    document.getElementById("borrarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                    $("#insertarCita").prop("disabled",false)
+                    $("#confirmarCita").prop("disabled",true)
+                    $("#generarIngreso").prop("disabled",true)                       
+                    $("#modificarCita").prop("disabled",true)
+                    $("#borrarCita").prop("disabled",true)                       
+                    limpiarFormulario()
+                    $('#input_fecha').val(date.format())
+                    var d = new Date()
+                    var hI = d.getHours()+1
+                    var hF = d.getHours()+2
+                    var mI = '00';                                         
+                    $("#input_horaini").val(hI+':'+mI)                       
+                    $("#input_horafin").val(hF+':'+mI)           
+                    $("#ModalEventos").modal()
+                }                  
+            },
+            events:'/clinica/eventos_terminado.php',
+            timeFormat: 'HH:mm',
+            eventRender: function(event, element) {
+                var s = "";
+                try{
+                var eventDate = new Date(event.start._i.split(" ")[0] + " " +event.tiempo_espera); 
+                var even = new Date(event.start._i)
                    //eventFechaHora = event.start._i.split(" ")
                    
                     eventFechaH = event.start._i.split(" ")[0] + " " +event.tiempo_espera
@@ -1853,239 +1853,243 @@
                 },
                eventClick: function(calEvent,jsEvent,view){
                     var date = new Date()
-                   var today = date.getDate()                   
-                   $('#input_id').val(calEvent.id)
-                   $('#input_color').val(calEvent.color)
-                   $('#tituloEvento').html(calEvent.servicio)
-                   $('#input_paciente').val(calEvent.title)                  
-                   $('#input_doctor').val(calEvent.doctor)                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
-                   $('#input_enfermera').val(calEvent.enfermera)                  
-                   $('#input_status').val(calEvent.estatus)
-                   $('#input_rs').val(calEvent.razon_social)
-                   var status = calEvent.estatus
-                   $('#input_servicio').val(calEvent.servicio)                   
-                   $('#input_cubiculo').val(calEvent.cubiculo)
-                   FechaHora = calEvent.start._i.split(" ")
-                   FechaHoraFin = calEvent.end._i.split(" ")
-                   $('#input_fecha').val(FechaHora[0])                
-                   $('#input_horaini').val(FechaHora[1])                  
-                   $('#input_horafin').val(FechaHoraFin[1])                   
-                   $("#ModalEventos").modal()
-                   var today1 = FechaHora[0] 
-                   var todaySplit = today1.split("-")
-                   var todayArray = todaySplit[2]
-                   
-                   if(today == todayArray) {
-                       console.log(status)                          
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false)                           
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",false)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }else{
-                       console.log(status)
-                       if($('#input_status').val() == 'Generado'){
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",false)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Confirmado') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }else if($('#input_status').val() == 'Espera') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Consulta') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       } else if($('#input_status').val() == 'Terminada') {
-                           document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
-                           document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
-                           document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
-                           $("#generarIngreso").prop("disabled",true)
-                           $("#confirmarCita").prop("disabled",true)
-                           $("#insertarCita").prop("disabled",true)
-                           $("#modificarCita").prop("disabled",false)
-                           $("#borrarCita").prop("disabled",false) 
-                       }
-                   }
-                   
-               },
-               editable:true,
-               eventDrop: function(calEvent,delta,revertFunc){
-                   months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
-                   var FechaDia = calEvent.start.format().split("T")
-                   var FechaDiaA = FechaDia[0]
+                    var today = date.getDate()                   
+                    $('#input_id').val(calEvent.id)
+                    $('#input_color').val(calEvent.color)
+                    $('#tituloEvento').html(calEvent.servicio)
+                    $('#input_paciente').val(calEvent.title)                  
+                    $('#input_doctor').val(calEvent.doctor)                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado)                  
+                    $('#input_enfermera').val(calEvent.enfermera)                  
+                    $('#input_status').val(calEvent.estatus)
+                    $('#input_rs').val(calEvent.razon_social)
+                    var status = calEvent.estatus
+                    $('#input_servicio').val(calEvent.servicio)                   
+                    $('#input_cubiculo').val(calEvent.cubiculo)
+                    FechaHora = calEvent.start._i.split(" ")
+                    FechaHoraFin = calEvent.end._i.split(" ")
+                    $('#input_fecha').val(FechaHora[0])                
+                    $('#input_horaini').val(FechaHora[1])                  
+                    $('#input_horafin').val(FechaHoraFin[1])                   
+                    $("#ModalEventos").modal()
+                    var today1 = FechaHora[0] 
+                    var todaySplit = today1.split("-")
+                    var todayArray = todaySplit[2]
+                    
+                    if(today == todayArray) {
+                        console.log(status)                          
+                        if($('#input_status').val() == 'Generado'){
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;")                           
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",false)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false)                           
+                        } else if($('#input_status').val() == 'Confirmado') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#0c6f0f;border:1px solid #0c6f0f;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",false)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        }else if($('#input_status').val() == 'Espera') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        } else if($('#input_status').val() == 'Consulta') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        } else if($('#input_status').val() == 'Terminada') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        }
+                    }else{
+                        console.log(status)
+                        if($('#input_status').val() == 'Generado'){
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#57cbc0;border:1px solid #57cbc0;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",false)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        } else if($('#input_status').val() == 'Confirmado') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        }else if($('#input_status').val() == 'Espera') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        } else if($('#input_status').val() == 'Consulta') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        } else if($('#input_status').val() == 'Terminada') {
+                            document.getElementById("insertarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("confirmarCita").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("generarIngreso").setAttribute("style","background:#9c9a9a;border:1px solid #9c9a9a;")
+                            document.getElementById("modificarCita").setAttribute("style","background:#2F5491;border:1px solid #2F5491;")
+                            document.getElementById("borrarCita").setAttribute("style","background:#ffa833;border:1px solid #ffa833;") 
+                            $("#generarIngreso").prop("disabled",true)
+                            $("#confirmarCita").prop("disabled",true)
+                            $("#insertarCita").prop("disabled",true)
+                            $("#modificarCita").prop("disabled",false)
+                            $("#borrarCita").prop("disabled",false) 
+                        }
+                    }
+                    
+                },
+                editable:true,
+                eventDrop: function(calEvent,delta,revertFunc){
+                    months = ["01","02","03","04","05","06","07","08","09","10","11","12"]                   
+                    var FechaDia = calEvent.start.format().split("T")
+                    var FechaDiaA = FechaDia[0]
                    //var dia = FechaDiaA[2]
                    //console.log(FechaDiaA)
-                   var date = new Date()
-                   var year = date.getFullYear()
-                   var month = months[date.getMonth()]
-                   var day = date.getDate()
-                   if (day < 10){
-                       var day = "0"+day
-                   }
-                   
-                   var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
-                   
+                    var date = new Date()
+                    var year = date.getFullYear()
+                    var month = months[date.getMonth()]
+                    var day = date.getDate()
+                    if (day < 10){
+                        var day = "0"+day
+                    }
+                    
+                    var fecha = year.toString()+"-"+month.toString()+"-"+day.toString()
+                    
                    //console.log(fecha)
-                   if(FechaDiaA < fecha){
-                       alert("ERROR! No puedes mover citas en días anteriores")
-                       revertFunc()
-                   }else{
-                       $('#input_id').val(calEvent.id);
-                       $('#input_color').val(calEvent.color);
-                       $('#tituloEvento').html(calEvent.servicio);
-                       $('#input_paciente').val(calEvent.title);                   
-                       $('#input_doctor').val(calEvent.doctor);                   
-                       $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                       $('#input_enfermera').val(calEvent.enfermera);                   
-                       $('#input_status').val(calEvent.estatus)                  
-                       $('#input_servicio').val(calEvent.servicio)                  
-                       $('#input_cubiculo').val(calEvent.cubiculo)                   
-                       var FechaHora = calEvent.start.format().split("T")                  
-                       $('#input_fecha').val(FechaHora[0]);                   
-                       $('#input_horaini').val(FechaHora[1]);                                      
-                       var FechaHoraFin = calEvent.end.format().split("T");                   
-                       $('#input_horafin').val(FechaHoraFin[1]);                   
-                       RecolectarDatosGUI();
-                       EnviarInformacion('modificar',NuevoEvento,true);
-                   }         
-               }
-           });
-           
-           $("#btn-insertar").click(function(){
+                    if(FechaDiaA < fecha){
+                        alert("ERROR! No puedes mover citas en días anteriores")
+                        revertFunc()
+                    }else{
+                        $('#input_id').val(calEvent.id);
+                        $('#input_color').val(calEvent.color);
+                        $('#tituloEvento').html(calEvent.servicio);
+                        $('#input_paciente').val(calEvent.title);                   
+                        $('#input_doctor').val(calEvent.doctor);                   
+                        $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                        $('#input_enfermera').val(calEvent.enfermera);                   
+                        $('#input_status').val(calEvent.estatus)                  
+                        $('#input_servicio').val(calEvent.servicio)                  
+                        $('#input_cubiculo').val(calEvent.cubiculo)                   
+                        var FechaHora = calEvent.start.format().split("T")                  
+                        $('#input_fecha').val(FechaHora[0]);                   
+                        $('#input_horaini').val(FechaHora[1]);                                      
+                        var FechaHoraFin = calEvent.end.format().split("T");                   
+                        $('#input_horafin').val(FechaHoraFin[1]);                   
+                        RecolectarDatosGUI();
+                        EnviarInformacion('modificar',NuevoEvento,true);
+                    }         
+                }
+            });
+            
+            $("#btn-insertar").click(function(){
             //limpiarModalUsuario();
             $("#ModalInsertar").modal();
-           });            
-           
-          $('#actualizarU').click(function(){
-              let identify = $("#input_identify").val()
-              let name = $("#input_nombre").val() 
-              let user = $("#input_usuario").val()
-              let pass = $("#input_contra").val()
-              let type = $("#input_tipo").val()
-              let comision = $("#input_comision").val()
-            $.post("/clinica/php/update_user.php",{
-              "identify": $("#input_identify").val(),
-              "name": $("#input_nombre").val(),
-              "user": $("#input_usuario").val(),
-              "pass": $("#input_contra").val(),
-              "type":$("#input_tipo").val(),
-              "comision": $("#input_comision").val()
-            }).done(function(data){
-                if (data.includes('insert')){
-                    alert("Registro actualizado");
-                    $("#ModalUser").modal("hide")
-                } else if(data.includes('not')){
-                    alert("Usuario ya exitente")
-                    $("#ModalUser").modal("hide")
-                }else{
-                  alert("error")
-                }
+            });            
+            
+            $('#actualizarU').click(function(){
+                let identify = $("#input_identify").val()
+                let name = $("#input_nombre").val() 
+                let user = $("#input_usuario").val()
+                let pass = $("#input_contra").val()
+                let type = $("#input_tipo").val()
+                let comision = $("#input_comision").val()
+                if(comision == "" || comision > 100){
+                    alert("El valor de comisión es erroneo")
+                }else {
+                    $.post("/clinica/php/update_user.php",{
+                        "identify": $("#input_identify").val(),
+                        "name": $("#input_nombre").val(),
+                        "user": $("#input_usuario").val(),
+                        "pass": $("#input_contra").val(),
+                        "type":$("#input_tipo").val(),
+                        "comision": $("#input_comision").val()
+                    }).done(function(data){
+                        if (data.includes('insert')){
+                            alert("Registro actualizado");
+                            $("#ModalUser").modal("hide")
+                        } else if(data.includes('not')){
+                            alert("Usuario ya exitente")
+                            $("#ModalUser").modal("hide")
+                        }else{
+                            alert("error")
+                        }
+                    })
+                }            
             })
-          })
-           $("#btn-modificar").click(function(){
-              
-               $("#ModalUser").modal();
-           });
-           
+            $("#btn-modificar").click(function(){
+
+                $("#ModalUser").modal();
+            });
+            
             $("#actualizar").click(function(){
-              var fecha = $("#txtFecha").val()
-              var paciente = $("#txtTitulo").val()
-              var id = $("#txtID").val()
-              $.post("/clinica/php/update_cita.php",{
+                var fecha = $("#txtFecha").val()
+                var paciente = $("#txtTitulo").val()
+                var id = $("#txtID").val()
+                $.post("/clinica/php/update_cita.php",{
                 "nombre": paciente,
                 "fecha": fecha,
                 "id":id
-              })
+                })
             })
-           
-           $("#insertarUser").click(function(){
+            
+            $("#insertarUser").click(function(){
                 var usuario = $("#input_usuarioR").val()
                 var contraseña = $("#input_contraseñaR").val()
                 var nombre = $("#input_nombreR").val()
@@ -2105,32 +2109,34 @@
                 var tipo = $("#input_tipo").val()
                 var comision = $("#input_comision").val()
                 //console.log(comision)
+                
                 if(usuario == ""){
-                  alert("El nombre de usuario está vacío")
+                    alert("El nombre de usuario está vacío")
                 }else if(contraseña == ""){
-                  alert("La contraseña está vacía")
+                    alert("La contraseña está vacía")
                 }else if(nombre == ""){
-                  alert("El nombre está vacíó")
+                    alert("El nombre está vacíó")
+                }else if(comision == "" || comision > 100){
+                    alert("El valor de comisión es erroneo")
                 }else{
-                  $.post("/clinica/php/insert_user.php", {
+                    $.post("/clinica/php/insert_user.php", {
                     "usuario":usuario,"contraseña":contraseña,"nombre":nombre,"apellidoP":apellidoP,"apellidoM":apellidoM,"rfc":rfc,"telefono1":telefono1,"telefono2":telefono2,"calle":calle,"colonia":colonia, "ne":ne,"ni":ni,"deleg":deleg, "estado":estado,"codigo":codigo,"correo":correo,"tipo":tipo,"comision":comision
                 }).done(function(data){                    
                     $("#ModalInsertar").modal("hide");
                     if(data.includes('not')){
-                      alert('Usuario ya existente')
+                        alert('Usuario ya existente')
                     }else{
-                      alert('Usuario insertado')
-                      location.reload();
+                        alert('Usuario insertado')
+                        location.reload();
                     }
                 });
                 }
                 
                 
             })          
-           
-       });        
-       
-       
+
+        });        
+
         
 	</script>
 	
@@ -2197,10 +2203,10 @@
                                 }                                
                             ?>
                         </select>                        
-                  </div>                                
-              </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
+                    </div>                                
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
                         <span>Doctor asignado: </span>
                         <?php
                             if ($mysqli->connect_errno) {
@@ -2229,15 +2235,15 @@
                             echo "</select>";
                             }                                
                         ?>                        
-                  </div>
-              </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                      <input type="hidden" name="status" value="" class="form-control hide" placeholder="Paciente" id="input_status">                                          
-                  </div>
-              </div>         
-          <div class="form-row">
-              <div class="form-group col-md-12">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="hidden" name="status" value="" class="form-control hide" placeholder="Paciente" id="input_status">                                          
+                    </div>
+                </div>         
+            <div class="form-row">
+                <div class="form-group col-md-12">
                     <span>Servicio: </span>
                     <select class="form-control" name="servicio" id="input_servicio" placeholder="servicio">
                     <?php
@@ -2410,7 +2416,7 @@
                     <span>Apellido Materno: </span><input type="text" name="apellidoM" value="" class="form-control" placeholder="Apellido Materno" id="input_apellidoMR">
               </div>
               <div class="form-group col-md-6">
-                    <span>Comisión: </span><input type="text" name="comision" value="" class="form-control" placeholder="Comisión..." id="input_comision">
+                    <span>Comisión: </span><input type="number" name="comision" value="" class="form-control" placeholder="Comisión..." id="input_comision" min="0" max="100">
               </div>
           </div>
           <div class="form-row">
@@ -2452,7 +2458,7 @@
 
             </div>
           <div class="modal-footer">          
-          <button type="button" class="btn btn-primary" id="insertarUser">Insertar</button>         
+          <button type="button" class="btn btn-primary" id="insertarUser">Insertar</button>          
         </div>
       </div>
     </div>
@@ -2460,6 +2466,7 @@
   
 	<script>
         var NuevoEvento;
+        
         $("#insertarCita").click(function(){ 
             var date = new Date();
             months = ["01","02","03","04","05","06","07","08","09","10","11","12"]
@@ -2578,15 +2585,14 @@
         $("#generarIngreso").click(function(){ 
             var date = new Date()
             if(date.getHours() < 10){
-              $.post("/clinica/php/cronometro.php",{"hora": "0" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),id_cita: $("#input_id").val()}).done(function(data){
-              
+                $.post("/clinica/php/cronometro.php",{"hora": "0" + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),id_cita: $("#input_id").val()}).done(function(data){
+                
             });
             }else{
-              $.post("/clinica/php/cronometro.php",{"hora": date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),id_cita: $("#input_id").val()}).done(function(data){
-              
+                $.post("/clinica/php/cronometro.php",{"hora": date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds(),id_cita: $("#input_id").val()}).done(function(data){
+                
             });
             }
-             
 
             RecolectarDatosGUI();
             EnviarInformacion('ingresar',NuevoEvento);
@@ -2597,9 +2603,9 @@
             EnviarInformacion('confirmar',NuevoEvento);
         })
         $("#input_paciente").on('change',function(){
-          $.post("php/consult_rs.php",{
-            "nombre": $("#input_paciente").val()
-          }).done(function(data){
+            $.post("php/consult_rs.php",{
+                "nombre": $("#input_paciente").val()
+            }).done(function(data){
             $("#input_rs").val(JSON.parse(data))
           })
         })
