@@ -2253,7 +2253,7 @@
               <div class="form-group col-md-8">
                   <button class="btn btn-primary" id="button_materiales"> Materiales</button>   
                   <button class="btn btn-primary" id="guarda_materiales"> Guardar Materiales</button>
-                  <button class="btn btn-primary" id="modificar_cita">Modificar Cita</button>                                           
+                  <button class="btn btn-warning" id="modificar_cita">Modificar Cita</button>                                           
                   <!--<button type="button" class="btn btn-danger" id="TerminarCita">Terminar Consulta</button>-->
                   
               </div>
@@ -2492,6 +2492,8 @@
         $("#modificar_cita").click(function(){
           RecolectarDatosGUI()
           EnviarInformacion('modificar_cita',NuevoEvento)
+          alert("Se han modificado los datos de la Consulta")
+          $("#ModalEventos").modal('toggle')
         })
         $("#modificarCita").click(function(){ 
             RecolectarDatosGUI();

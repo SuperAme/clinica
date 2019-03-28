@@ -63,6 +63,24 @@
             ));
             echo json_encode($result);
             break;
+        case 'modificar_cita':
+            $sql = $pdo->prepare('UPDATE citas SET
+                doctor=:doctor,
+				doctor_asignado=:doctor_asignado,
+				enfermera=:enfermera,
+                servicio=:servicio,
+                cubiculo=:cubiculo
+                WHERE id = :id');
+                $result = $sql->execute(array(
+                    "id"=>$_POST['id'],
+                    "doctor" => $_POST['doctor'],
+				    "doctor_asignado" => $_POST['doctor_asignado'],
+                    "enfermera" => $_POST['enfermera'],
+                    "servicio" => $_POST['servicio'],
+				    "cubiculo" => $_POST['cubiculo']
+                ));
+                echo json_encode($result);
+                break;
         default:
 
             $sql = $pdo->prepare("SELECT id,CONCAT(title,'--',servicio) as title,doctor,doctor_asignado,enfermera,start,end,materiales,duracion,estatus,servicio,cubiculo,color,razon_social from citas WHERE doctor like '$nombre' OR doctor_asignado like '$nombre'");

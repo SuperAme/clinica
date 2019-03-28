@@ -240,12 +240,14 @@
                       $("#button_materiales").prop("disabled",true)                   
                       $("#modificarCita").prop("disabled",false)
                       $("#modificarCita").html("Iniciar Consulta")
+                      $("#modificar_cita").prop("disabled",true)
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
                   }else if($('#input_status').val() == 'Consulta'){
                       $("#products_table").show()
                       $("#button_materiales").prop("disabled",false)                   
                       $("#modificarCita").prop("disabled",false)
+                      $("#modificar_cita").prop("disabled",false)
                       $("#modificarCita").html("Continuar Consulta")
                       $("#envia_modelo").prop("disabled",false)
                       $("#TerminarCita").prop("disabled",false)
@@ -253,6 +255,7 @@
                       $("#products_table").hide()
                       $("#button_materiales").prop("disabled",true)             
                       $("#modificarCita").prop("disabled",true)
+                      $("#modificar_cita").prop("disabled",true)
                       $("#modificarCita").html("Iniciar Consulta")
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
@@ -261,12 +264,14 @@
                       $("#button_materiales").prop("disabled",true)              
                       $("#modificarCita").prop("disabled",true)
                       $("#modificarCita").html("Iniciar Consulta")
+                      $("#modificar_cita").prop("disabled",true)
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)  
                   }else if($('#input_status').val() == 'Terminada'){
                       $("#products_table").show()  
                       $("#button_materiales").prop("disabled",true)              
                       $("#modificarCita").prop("disabled",true)
+                      $("#modificar_cita").prop("disabled",true)
                       $("#modificarCita").html("Finalizada")
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
@@ -1362,7 +1367,7 @@
                                 printf("Falló la conexión: %s\n", $mysqli->connect_error);
                                 exit();
                             }else{  
-                            echo '<select class="form-control" name="pacientes" id="input_enfermera" readonly>';
+                            echo '<select class="form-control" name="pacientes" id="input_enfermera">';
                             foreach($mysqli->query('SELECT nombre FROM usuarios WHERE tipo = "E" ORDER BY nombre ASC') as $row) {
                               echo "<option>". $row[nombre]."</option>";
                             }
@@ -1372,7 +1377,7 @@
                   </div>
               </div>                       
           <div class="form-row">
-              <div class="form-group col-md-12">
+              <div class="form-group col-md-6">
                     <span>Servicio: </span>
                     <select class="form-control" name="servicio" id="input_servicio">
                         <?php
@@ -1391,12 +1396,30 @@
                         ?>
                     </select>
                     <!--<input type="text" name="servicio" value="" class="form-control" placeholder="Servicio" id="input_servicio">-->
-              </div>             
-          </div>
-          <div class="form-row">
-              <div class="form-group col-md-12">
-                    <span>Cubículo: </span><input type="text" name="cubiculo" value="" class="form-control" placeholder="Cubículo" id="input_cubiculo">
-              </div>             
+              </div>        
+              <div class="form-group col-md-6">
+                    <span>Cubículo: </span>                   
+                    <select class="form-control" name="cubiculo" id="input_cubiculo" placeholder="Cubículo">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                    </select>
+              </div>                           
           </div>
           <div class="form-row">
                   <div class="form-group col-md-6">
@@ -1418,7 +1441,7 @@
               <div class="form-group col-md-6">
                     <span>Hora final: </span>
                     <div class="input-group" data-autoclose="true">
-                        <input type="text" name="fin" class="form-control"  id="input_horafin">
+                        <input type="text" name="fin" class="form-control"  id="input_horafin" readonly>
                     </div>
               </div>
           </div>
@@ -1428,14 +1451,14 @@
               </div>
           </div>
           <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-8">
                   <button class="btn btn-primary" id="button_materiales"> Material y/o Servicio</button>      
                   <!--<button class="btn btn-primary" id="envia_modelo"> Enviar Modelo</button>                    -->
                                       
                   <button type="button" class="btn btn-danger" id="TerminarCita">Terminar Consulta</button>                                                         
-                  
+                  <button type="button" class="btn btn-warning" id="modificar_cita">Modificar Consulta</button>                  
               </div>
-              <div class="form-group col-md-6" style="display:flex;justify-content:flex-end;">
+              <div class="form-group col-md-4" style="display:flex;justify-content:flex-end;">
                   <button type="button" class="btn btn-secondary" id="canc">Cancelar</button>
               </div>
           </div>
@@ -1747,7 +1770,13 @@
             document.getElementById("products_table").deleteRow(e['originalEvent']['target'].closest("tr").rowIndex)
             })      
 
-        var NuevoEvento;          
+        var NuevoEvento; 
+        $("#modificar_cita").click(function(){
+          RecolectarDatosGUI()
+          EnviarInformacion('modificar_cita',NuevoEvento)
+          alert("Se han modificado los datos de la Consulta")
+          $("#ModalEventos").modal('toggle')
+        })         
         $("#modificarCita").click(function(){
             
             //document.getElementById("envia_modelo").setAttribute("name",$("#input_paciente").val() + " " + $("#input_id").val())
