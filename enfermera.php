@@ -186,8 +186,8 @@
                     prod_tab.appendChild(tr_prodt)
                     $("#products_table").show()
                     /*ment.getElementById("Mk").style.width = "1000px"*/
-                   document.getElementById("tbody_t").innerHTML = ""                   
-                   $.post("/clinica/php/consult_mat_nurse.php",{"paciente":paciente,"id":id}).done(function(data){
+                    document.getElementById("tbody_t").innerHTML = ""                   
+                    $.post("/clinica/php/consult_mat_nurse.php",{"paciente":paciente,"id":id}).done(function(data){
                       var obj = JSON.parse(data)
                       if (obj.length === 0){
                           if(status === 'Consulta'){                              
@@ -254,49 +254,49 @@
                             td_total.innerHTML = "Total " + "$"+total.toString();
             })
             $('#calendario_e').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'agendaWeek, agendaDay'
-               },
-               minTime:'09:00:00',
-               maxTime:'22:00:00',
-               /*dayClick:function(date,jsEvent,view){
-                   $("#generarIngreso").prop("disabled",true);
-                   $("#insertarCita").prop("disabled",false);
-                   $("#modificarCita").prop("disabled",true);
-                   $("#borrarCita").prop("disabled",true);
-                   limpiarFormulario();
-                   $('#input_fecha').val(date.format());
-                   $("#ModalEventos").modal();                   
-               },*/
-               events:'/clinica/eventos_doctor.php',
-               eventClick: function(calEvent,jsEvent,view){
+                header:{
+                    left:'prev,today,next',
+                    center: 'title',
+                    right: 'agendaWeek, agendaDay'
+                },
+                minTime:'09:00:00',
+                maxTime:'22:00:00',
+                /*dayClick:function(date,jsEvent,view){
+                    $("#generarIngreso").prop("disabled",true);
+                    $("#insertarCita").prop("disabled",false);
+                    $("#modificarCita").prop("disabled",true);
+                    $("#borrarCita").prop("disabled",true);
+                    limpiarFormulario();
+                    $('#input_fecha').val(date.format());
+                    $("#ModalEventos").modal();                   
+                },*/
+                events:'/clinica/eventos_doctor.php',
+                eventClick: function(calEvent,jsEvent,view){
                 
                   var paciente = calEvent.title.split("--"); 
-                   var status = calEvent.estatus;
-                   $("#generarIngreso").prop("disabled",false);
-                   $("#insertarCita").prop("disabled",true);
-                   $("#modificarCita").prop("disabled",false);
-                   $("#borrarCita").prop("disabled",false);
-                   $('#input_id').val(calEvent.id);
-                   $('#input_rs').val(calEvent.razon_social);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(paciente[0]);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo); 
-                   FechaHora = calEvent.start._i.split(" ");
-                   FechaHoraFin = calEvent.end._i.split(" ");
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);                   
-                   $('#input_horafin').val(FechaHoraFin[1]);                   
-                   $("#ModalEventos").modal();
-                   console.log(status);
-                   var id = $('#input_id').val();
+                  var status = calEvent.estatus;
+                  $("#generarIngreso").prop("disabled",false);
+                  $("#insertarCita").prop("disabled",true);
+                  $("#modificarCita").prop("disabled",false);
+                  $("#borrarCita").prop("disabled",false);
+                  $('#input_id').val(calEvent.id);
+                  $('#input_rs').val(calEvent.razon_social);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(paciente[0]);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo); 
+                  FechaHora = calEvent.start._i.split(" ");
+                  FechaHoraFin = calEvent.end._i.split(" ");
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);                   
+                  $('#input_horafin').val(FechaHoraFin[1]);                   
+                  $("#ModalEventos").modal();
+                  console.log(status);
+                  var id = $('#input_id').val();
                     var tbody = document.getElementById("tbody_t")
                     var paciente = $('#input_paciente').val();
                     var servicio = $('#input_servicio').val();
@@ -395,78 +395,78 @@
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
 
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#input_color').val(calEvent.color);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-           $('#calendario_g').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'agendaWeek, agendaDay'
-               },
-               contentHeight: 'auto',
-               minTime:'09:00:00',
-               maxTime:'22:00:00',
-               /*dayClick:function(date,jsEvent,view){
-                   $("#generarIngreso").prop("disabled",true);
-                   $("#insertarCita").prop("disabled",false);
-                   $("#modificarCita").prop("disabled",true);
-                   $("#borrarCita").prop("disabled",true);
-                   limpiarFormulario();
-                   $('#input_fecha').val(date.format());
-                   $("#ModalEventos").modal();                   
-               },*/
-               events:'/clinica/eventos_generado.php',
-               eventClick: function(calEvent,jsEvent,view){
+                    }
+                },               
+                eventDrop: function(calEvent){
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus);                   
+                    $('#input_servicio').val(calEvent.servicio);                   
+                    $('#input_cubiculo').val(calEvent.cubiculo);
+                    
+                    var FechaHora = calEvent.start.format().split("T");            
+                    
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);
+                    
+                    var FechaHoraFin = calEvent.end.format().split("T");
+                    
+                    
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);                                     
+                },
+                defaultView: 'agendaDay'
+            });
+            $('#calendario_g').fullCalendar({
+                header:{
+                    left:'prev,today,next',
+                    center: 'title',
+                    right: 'agendaWeek, agendaDay'
+                },
+                contentHeight: 'auto',
+                minTime:'09:00:00',
+                maxTime:'22:00:00',
+                /*dayClick:function(date,jsEvent,view){
+                    $("#generarIngreso").prop("disabled",true);
+                    $("#insertarCita").prop("disabled",false);
+                    $("#modificarCita").prop("disabled",true);
+                    $("#borrarCita").prop("disabled",true);
+                    limpiarFormulario();
+                    $('#input_fecha').val(date.format());
+                    $("#ModalEventos").modal();                   
+                },*/
+                events:'/clinica/eventos_generado.php',
+                eventClick: function(calEvent,jsEvent,view){
                 
                   var paciente = calEvent.title.split("--"); 
-                   var status = calEvent.estatus;
-                   $("#generarIngreso").prop("disabled",false);
-                   $("#insertarCita").prop("disabled",true);
-                   $("#modificarCita").prop("disabled",false);
-                   $("#borrarCita").prop("disabled",false);
-                   $('#input_id').val(calEvent.id);
-                   $('#input_rs').val(calEvent.razon_social);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(paciente[0]);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo); 
-                   FechaHora = calEvent.start._i.split(" ");
-                   FechaHoraFin = calEvent.end._i.split(" ");
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);                   
-                   $('#input_horafin').val(FechaHoraFin[1]);                   
-                   $("#ModalEventos").modal();
-                   console.log(status);
-                   var id = $('#input_id').val();
+                  var status = calEvent.estatus;
+                  $("#generarIngreso").prop("disabled",false);
+                  $("#insertarCita").prop("disabled",true);
+                  $("#modificarCita").prop("disabled",false);
+                  $("#borrarCita").prop("disabled",false);
+                  $('#input_id').val(calEvent.id);
+                  $('#input_rs').val(calEvent.razon_social);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(paciente[0]);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo); 
+                  FechaHora = calEvent.start._i.split(" ");
+                  FechaHoraFin = calEvent.end._i.split(" ");
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);                   
+                  $('#input_horafin').val(FechaHoraFin[1]);                   
+                  $("#ModalEventos").modal();
+                  console.log(status);
+                  var id = $('#input_id').val();
                     var tbody = document.getElementById("tbody_t")
                     var paciente = $('#input_paciente').val();
                     var servicio = $('#input_servicio').val();
@@ -565,78 +565,78 @@
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
 
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#input_color').val(calEvent.color);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-           
-           $('#calendario_cf').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'agendaWeek, agendaDay'
-               },
-               minTime:'09:00:00',
-               maxTime:'22:00:00',
-               /*dayClick:function(date,jsEvent,view){
-                   $("#generarIngreso").prop("disabled",true);
-                   $("#insertarCita").prop("disabled",false);
-                   $("#modificarCita").prop("disabled",true);
-                   $("#borrarCita").prop("disabled",true);
-                   limpiarFormulario();
-                   $('#input_fecha').val(date.format());
-                   $("#ModalEventos").modal();                   
-               },*/
-               events:'/clinica/eventos_doctor.php',
-               eventClick: function(calEvent,jsEvent,view){
+                    }
+                },               
+                eventDrop: function(calEvent){
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus);                   
+                    $('#input_servicio').val(calEvent.servicio);                   
+                    $('#input_cubiculo').val(calEvent.cubiculo);
+                    
+                    var FechaHora = calEvent.start.format().split("T");            
+                    
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);
+                    
+                    var FechaHoraFin = calEvent.end.format().split("T");
+                    
+                    
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);                                     
+                },
+                defaultView: 'agendaDay'
+            });
+            
+            $('#calendario_cf').fullCalendar({
+                header:{
+                    left:'prev,today,next',
+                    center: 'title',
+                    right: 'agendaWeek, agendaDay'
+                },
+                minTime:'09:00:00',
+                maxTime:'22:00:00',
+                /*dayClick:function(date,jsEvent,view){
+                    $("#generarIngreso").prop("disabled",true);
+                    $("#insertarCita").prop("disabled",false);
+                    $("#modificarCita").prop("disabled",true);
+                    $("#borrarCita").prop("disabled",true);
+                    limpiarFormulario();
+                    $('#input_fecha').val(date.format());
+                    $("#ModalEventos").modal();                   
+                },*/
+                events:'/clinica/eventos_doctor.php',
+                eventClick: function(calEvent,jsEvent,view){
                 
                   var paciente = calEvent.title.split("--"); 
-                   var status = calEvent.estatus;
-                   $("#generarIngreso").prop("disabled",false);
-                   $("#insertarCita").prop("disabled",true);
-                   $("#modificarCita").prop("disabled",false);
-                   $("#borrarCita").prop("disabled",false);
-                   $('#input_id').val(calEvent.id);
-                   $('#input_rs').val(calEvent.razon_social);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(paciente[0]);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo); 
-                   FechaHora = calEvent.start._i.split(" ");
-                   FechaHoraFin = calEvent.end._i.split(" ");
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);                   
-                   $('#input_horafin').val(FechaHoraFin[1]);                   
-                   $("#ModalEventos").modal();
-                   console.log(status);
-                   var id = $('#input_id').val();
+                  var status = calEvent.estatus;
+                  $("#generarIngreso").prop("disabled",false);
+                  $("#insertarCita").prop("disabled",true);
+                  $("#modificarCita").prop("disabled",false);
+                  $("#borrarCita").prop("disabled",false);
+                  $('#input_id').val(calEvent.id);
+                  $('#input_rs').val(calEvent.razon_social);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(paciente[0]);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo); 
+                  FechaHora = calEvent.start._i.split(" ");
+                  FechaHoraFin = calEvent.end._i.split(" ");
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);                   
+                  $('#input_horafin').val(FechaHoraFin[1]);                   
+                  $("#ModalEventos").modal();
+                  console.log(status);
+                  var id = $('#input_id').val();
                     var tbody = document.getElementById("tbody_t")
                     var paciente = $('#input_paciente').val();
                     var servicio = $('#input_servicio').val();
@@ -735,78 +735,78 @@
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
 
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#input_color').val(calEvent.color);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-           
-           $('#calendario_c').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'agendaWeek, agendaDay'
-               },
-               minTime:'09:00:00',
-               maxTime:'22:00:00',
-               /*dayClick:function(date,jsEvent,view){
-                   $("#generarIngreso").prop("disabled",true);
-                   $("#insertarCita").prop("disabled",false);
-                   $("#modificarCita").prop("disabled",true);
-                   $("#borrarCita").prop("disabled",true);
-                   limpiarFormulario();
-                   $('#input_fecha').val(date.format());
-                   $("#ModalEventos").modal();                   
-               },*/
-               events:'/clinica/eventos_doctor.php',
-               eventClick: function(calEvent,jsEvent,view){
+                    }
+                },               
+                eventDrop: function(calEvent){
+                    $('#input_id').val(calEvent.id);
+                    $('#input_color').val(calEvent.color);
+                    $('#tituloEvento').html(calEvent.servicio);
+                    $('#input_paciente').val(calEvent.title);                   
+                    $('#input_doctor').val(calEvent.doctor);                   
+                    $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                    $('#input_enfermera').val(calEvent.enfermera);                   
+                    $('#input_status').val(calEvent.estatus);                   
+                    $('#input_servicio').val(calEvent.servicio);                   
+                    $('#input_cubiculo').val(calEvent.cubiculo);
+                    
+                    var FechaHora = calEvent.start.format().split("T");            
+                    
+                    $('#input_fecha').val(FechaHora[0]);                   
+                    $('#input_horaini').val(FechaHora[1]);
+                    
+                    var FechaHoraFin = calEvent.end.format().split("T");
+                    
+                    
+                    RecolectarDatosGUI();
+                    EnviarInformacion('modificar',NuevoEvento,true);                                     
+                },
+                defaultView: 'agendaDay'
+            });
+            
+            $('#calendario_c').fullCalendar({
+                header:{
+                    left:'prev,today,next',
+                    center: 'title',
+                    right: 'agendaWeek, agendaDay'
+                },
+                minTime:'09:00:00',
+                maxTime:'22:00:00',
+                /*dayClick:function(date,jsEvent,view){
+                    $("#generarIngreso").prop("disabled",true);
+                    $("#insertarCita").prop("disabled",false);
+                    $("#modificarCita").prop("disabled",true);
+                    $("#borrarCita").prop("disabled",true);
+                    limpiarFormulario();
+                    $('#input_fecha').val(date.format());
+                    $("#ModalEventos").modal();                   
+                },*/
+                events:'/clinica/eventos_doctor.php',
+                eventClick: function(calEvent,jsEvent,view){
                 
                   var paciente = calEvent.title.split("--"); 
-                   var status = calEvent.estatus;
-                   $("#generarIngreso").prop("disabled",false);
-                   $("#insertarCita").prop("disabled",true);
-                   $("#modificarCita").prop("disabled",false);
-                   $("#borrarCita").prop("disabled",false);
-                   $('#input_id').val(calEvent.id);
-                   $('#input_rs').val(calEvent.razon_social);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(paciente[0]);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo); 
-                   FechaHora = calEvent.start._i.split(" ");
-                   FechaHoraFin = calEvent.end._i.split(" ");
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);                   
-                   $('#input_horafin').val(FechaHoraFin[1]);                   
-                   $("#ModalEventos").modal();
-                   console.log(status);
-                   var id = $('#input_id').val();
+                  var status = calEvent.estatus;
+                  $("#generarIngreso").prop("disabled",false);
+                  $("#insertarCita").prop("disabled",true);
+                  $("#modificarCita").prop("disabled",false);
+                  $("#borrarCita").prop("disabled",false);
+                  $('#input_id').val(calEvent.id);
+                  $('#input_rs').val(calEvent.razon_social);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(paciente[0]);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo); 
+                  FechaHora = calEvent.start._i.split(" ");
+                  FechaHoraFin = calEvent.end._i.split(" ");
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);                   
+                  $('#input_horafin').val(FechaHoraFin[1]);                   
+                  $("#ModalEventos").modal();
+                  console.log(status);
+                  var id = $('#input_id').val();
                     var tbody = document.getElementById("tbody_t")
                     var paciente = $('#input_paciente').val();
                     var servicio = $('#input_servicio').val();
@@ -905,78 +905,78 @@
                       $("#envia_modelo").prop("disabled",true)
                       $("#TerminarCita").prop("disabled",true)
 
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#input_color').val(calEvent.color);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-           
-           $('#calendario_cf').fullCalendar({
-               header:{
-                   left:'prev,today,next',
-                   center: 'title',
-                   right: 'agendaWeek, agendaDay'
-               },
-               minTime:'09:00:00',
-               maxTime:'22:00:00',
-               /*dayClick:function(date,jsEvent,view){
-                   $("#generarIngreso").prop("disabled",true);
-                   $("#insertarCita").prop("disabled",false);
-                   $("#modificarCita").prop("disabled",true);
-                   $("#borrarCita").prop("disabled",true);
-                   limpiarFormulario();
-                   $('#input_fecha').val(date.format());
-                   $("#ModalEventos").modal();                   
-               },*/
-               events:'/clinica/eventos_doctor.php',
-               eventClick: function(calEvent,jsEvent,view){
+                  }
+              },               
+              eventDrop: function(calEvent){
+                  $('#input_id').val(calEvent.id);
+                  $('#input_color').val(calEvent.color);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(calEvent.title);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo);
+                  
+                  var FechaHora = calEvent.start.format().split("T");            
+                  
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);
+                  
+                  var FechaHoraFin = calEvent.end.format().split("T");
+                  
+                  
+                  RecolectarDatosGUI();
+                  EnviarInformacion('modificar',NuevoEvento,true);                                     
+              },
+              defaultView: 'agendaDay'
+          });
+          
+          $('#calendario_cf').fullCalendar({
+              header:{
+                  left:'prev,today,next',
+                  center: 'title',
+                  right: 'agendaWeek, agendaDay'
+              },
+              minTime:'09:00:00',
+              maxTime:'22:00:00',
+              /*dayClick:function(date,jsEvent,view){
+                  $("#generarIngreso").prop("disabled",true);
+                  $("#insertarCita").prop("disabled",false);
+                  $("#modificarCita").prop("disabled",true);
+                  $("#borrarCita").prop("disabled",true);
+                  limpiarFormulario();
+                  $('#input_fecha').val(date.format());
+                  $("#ModalEventos").modal();                   
+              },*/
+              events:'/clinica/eventos_doctor.php',
+              eventClick: function(calEvent,jsEvent,view){
                 
                   var paciente = calEvent.title.split("--"); 
-                   var status = calEvent.estatus;
-                   $("#generarIngreso").prop("disabled",false);
-                   $("#insertarCita").prop("disabled",true);
-                   $("#modificarCita").prop("disabled",false);
-                   $("#borrarCita").prop("disabled",false);
-                   $('#input_id').val(calEvent.id);
-                   $('#input_rs').val(calEvent.razon_social);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(paciente[0]);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo); 
-                   FechaHora = calEvent.start._i.split(" ");
-                   FechaHoraFin = calEvent.end._i.split(" ");
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);                   
-                   $('#input_horafin').val(FechaHoraFin[1]);                   
-                   $("#ModalEventos").modal();
-                   console.log(status);
-                   var id = $('#input_id').val();
+                  var status = calEvent.estatus;
+                  $("#generarIngreso").prop("disabled",false);
+                  $("#insertarCita").prop("disabled",true);
+                  $("#modificarCita").prop("disabled",false);
+                  $("#borrarCita").prop("disabled",false);
+                  $('#input_id').val(calEvent.id);
+                  $('#input_rs').val(calEvent.razon_social);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(paciente[0]);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo); 
+                  FechaHora = calEvent.start._i.split(" ");
+                  FechaHoraFin = calEvent.end._i.split(" ");
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);                   
+                  $('#input_horafin').val(FechaHoraFin[1]);                   
+                  $("#ModalEventos").modal();
+                  console.log(status);
+                  var id = $('#input_id').val();
                     var tbody = document.getElementById("tbody_t")
                     var paciente = $('#input_paciente').val();
                     var servicio = $('#input_servicio').val();
@@ -1127,40 +1127,40 @@
                       $("#guarda_materiales").prop("disabled",true)
                       $("#modificarCita").prop("disabled",true) 
                       $("#modificarCita").html("Iniciar Cita");
-                   }else if($('#input_status').val() == 'Terminada'){
-                       $("#products_table").show()
-                       $("#button_materiales").prop("disabled",true)                      
-                       $("#guarda_materiales").prop("disabled",true)
-                       $("#modificarCita").prop("disabled",true);                       
-                       $("#modificarCita").html("Finalizada");                       
-                   }
-               },               
-               eventDrop: function(calEvent){
-                   $('#input_id').val(calEvent.id);
-                   $('#tituloEvento').html(calEvent.servicio);
-                   $('#input_paciente').val(calEvent.title);                   
-                   $('#input_doctor').val(calEvent.doctor);                   
-                   $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
-                   $('#input_enfermera').val(calEvent.enfermera);                   
-                   $('#input_status').val(calEvent.estatus);                   
-                   $('#input_servicio').val(calEvent.servicio);                   
-                   $('#input_cubiculo').val(calEvent.cubiculo);
-                   
-                   var FechaHora = calEvent.start.format().split("T");            
-                   
-                   $('#input_fecha').val(FechaHora[0]);                   
-                   $('#input_horaini').val(FechaHora[1]);
-                   
-                   var FechaHoraFin = calEvent.end.format().split("T");
-                   
-                   
-                   RecolectarDatosGUI();
-                   EnviarInformacion('modificar',NuevoEvento,true);                                     
-               },
-               defaultView: 'agendaDay'
-           });
-           
-           
+                  }else if($('#input_status').val() == 'Terminada'){
+                      $("#products_table").show()
+                      $("#button_materiales").prop("disabled",true)                      
+                      $("#guarda_materiales").prop("disabled",true)
+                      $("#modificarCita").prop("disabled",true);                       
+                      $("#modificarCita").html("Finalizada");                       
+                  }
+              },               
+              eventDrop: function(calEvent){
+                  $('#input_id').val(calEvent.id);
+                  $('#tituloEvento').html(calEvent.servicio);
+                  $('#input_paciente').val(calEvent.title);                   
+                  $('#input_doctor').val(calEvent.doctor);                   
+                  $('#input_doctor_asignado').val(calEvent.doctor_asignado);                   
+                  $('#input_enfermera').val(calEvent.enfermera);                   
+                  $('#input_status').val(calEvent.estatus);                   
+                  $('#input_servicio').val(calEvent.servicio);                   
+                  $('#input_cubiculo').val(calEvent.cubiculo);
+                  
+                  var FechaHora = calEvent.start.format().split("T");            
+                  
+                  $('#input_fecha').val(FechaHora[0]);                   
+                  $('#input_horaini').val(FechaHora[1]);
+                  
+                  var FechaHoraFin = calEvent.end.format().split("T");
+                  
+                  
+                  RecolectarDatosGUI();
+                  EnviarInformacion('modificar',NuevoEvento,true);                                     
+              },
+              defaultView: 'agendaDay'
+          });
+          
+          
           });
           $('#calendario_e').fullCalendar({
               header:{
@@ -2158,20 +2158,10 @@
           </div>                       
               <div class="form-row">
               <div class="form-group col-md-12">
-                    <span>Doctor: </span>                        
-                        <?php
-                            if ($mysqli->connect_errno) {
-                                printf("Falló la conexión: %s\n", $mysqli->connect_error);
-                                exit();
-                            }else{  
-                            echo "<select class='form-control' name='pacientes' id='input_doctor'>";
-                            foreach($mysqli->query('SELECT nombre FROM usuarios WHERE tipo = "D" ORDER BY nombre ASC') as $row) {
-                              echo "<option>". $row[nombre]."</option>";
-                            }
-                            echo "</select>";
-                            }                                
-                        ?>
-                    </select>                        
+                    <span>Doctor: </span> 
+                    <input id="input_doctor" name='pacientes' class="form-control" type="text" readonly>                       
+                       
+                                          
               </div>                                
               </div>
               <div class="form-row">
@@ -2192,42 +2182,40 @@
                   </div>
                   <div class="form-group col-md-6">
                         <span>Enfermera: </span>
-                        <?php
-                            if ($mysqli->connect_errno) {
-                                printf("Falló la conexión: %s\n", $mysqli->connect_error);
-                                exit();
-                            }else{  
-                            echo '<select class="form-control" name="pacientes" id="input_enfermera">';
-                            foreach($mysqli->query('SELECT nombre FROM usuarios WHERE tipo = "E" ORDER BY nombre ASC') as $row) {
-                              echo "<option>". $row[nombre]."</option>";
-                            }
-                            echo "</select>";
-                            }                                
-                        ?>                        
+                        <input id="input_enfermera" class="form-control" type="text" readonly>                                              
                   </div>
               </div>                       
           <div class="form-row">
               <div class="form-group col-md-12">
                     <span>Servicio: </span>
-                    <select class="form-control" name="servicio" id="input_servicio">
-                        <?php
-                          if($gestor_db == true) {
-                              $sql = "SELECT DESCR FROM INVE01 WHERE TIPO_ELE = 'S'";
-                              $gestor_sent = ibase_query($gestor_db, $sql);
-                              $coln = ibase_num_fields($gestor_sent);
-                              while ($t = ibase_fetch_object($gestor_sent)){
-                                  $descr = $t-> DESCR;
-                                  echo "<option>$descr</option>";
-                              }
-                          }
-                        ?>
-                    </select>
+                    <input class="form-control" type="text" name="servicio" id="input_servicio" readonly>
+                    
                     <!--<input type="text" name="servicio" value="" class="form-control" placeholder="Servicio" id="input_servicio">-->
               </div>             
           </div>
           <div class="form-row">
               <div class="form-group col-md-12">
-                    <span>Cubículo: </span><input type="text" name="cubiculo" value="" class="form-control" placeholder="Cubículo" id="input_cubiculo">
+                    <span>Cubículo: </span>
+                    <select class="form-control" name="cubiculo" id="input_cubiculo" placeholder="Cubículo">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                    </select>
               </div>             
           </div>
           <div class="form-row">
@@ -2244,7 +2232,7 @@
               <div class="form-group col-md-6">
                     <span>Hora inicial: </span>
                     <div class="input-group clockpicker" data-autoclose="true">
-                        <input type="text" name="ini" class="form-control" id="input_horaini">
+                        <input type="text" name="ini" class="form-control" id="input_horaini" readonly>
                     </div>
               </div>
               <div class="form-group col-md-6">
@@ -2262,7 +2250,8 @@
           <div class="form-row">
               <div class="form-group col-md-6">
                   <button class="btn btn-primary" id="button_materiales"> Materiales</button>   
-                  <button class="btn btn-primary" id="guarda_materiales"> Guardar Materiales</button>                                           
+                  <button class="btn btn-primary" id="guarda_materiales"> Guardar Materiales</button>
+                  <button class="btn btn-primary" id="modificar_cita">Modificar Cita</button>                                           
                   <!--<button type="button" class="btn btn-danger" id="TerminarCita">Terminar Consulta</button>-->
                   
               </div>
@@ -2497,7 +2486,11 @@
             document.getElementById("products_table").deleteRow(e['originalEvent']['target'].closest("tr").rowIndex)
           })      
 
-        var NuevoEvento;      
+        var NuevoEvento;
+        $("#modificar_cita").click(function(){
+          RecolectarDatosGUI()
+          EnviarInformacion('modificar_cita',NuevoEvento)
+        })
         $("#modificarCita").click(function(){ 
             RecolectarDatosGUI();
             //$('#input_horafin').val(FechaHoraFin[1]);

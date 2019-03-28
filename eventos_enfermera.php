@@ -36,7 +36,19 @@
                 "color" => '#f0671f'
 			));
             echo json_encode($result);
-            break;       
+            break;
+        case 'modificar_cita':
+            $sql = $pdo->prepare('UPDATE citas SET
+                doctor_asignado=:doctor_asignado,
+                cubiculo=:cubiculo
+                WHERE id = :id');
+                $result = $sql->execute(array(
+                    "id"=>$_POST['id'],
+                    "doctor_asignado" => $_POST['doctor_asignado'],
+                    "cubiculo" => $_POST['cubiculo']
+                ));
+                echo json_encode($result);
+                break;
         default:
             $sql = $pdo->prepare("SELECT id,CONCAT(title,'--',servicio) as title,doctor,doctor_asignado,enfermera,start,end,materiales,duracion,estatus,servicio,cubiculo,color from citas WHERE enfermera like '$nombre'");
             $sql -> execute();
