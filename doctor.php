@@ -30,6 +30,7 @@
 	<script type="text/javascript" src="js/recep.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/consulta.js"></script>
+  <script type="text/javascript" src="js/consultac.js"></script>
 	<script src="js/bootstrap-clockpicker.js"></script>
 </head>
 <body>   
@@ -86,12 +87,14 @@
                     <thead>
                         <h2>Pacientes en Consulta</h2>
                         <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>Nombre</th>
+                            <th>Cubículo</th>
+                            <th>Servicio</th>
                         </tr>
                     </thead>
+                    <tbody class="liste">
+                        
+                    </tbody>
                 </table>
             </div>
         </div>
