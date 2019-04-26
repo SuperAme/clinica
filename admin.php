@@ -51,7 +51,7 @@
      </ul>
   </div>
 </header>      
-	<div class="container">
+	<div class="container-fluid">
 	    <div class="row botones">
           <div class="col-12">
               <button id="todos" class="btn">Todos</button>
@@ -64,7 +64,22 @@
           </div>
       </div>
     <div class="row">
-      <div class="col-12"><div id="calendario"></div></div>     
+      <div class="col-8"><div id="calendario"></div></div>
+      <div class="col-4"><div id="information">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Hora llegada</th>
+                    <th>Tiempo espera</th>
+                    <th>Hora cita</th>
+                </tr>
+            </thead>
+            <tbody class="listc">
+                
+            </tbody>
+        </table>
+      </div></div>     
     </div>
     <div class="row">
         <div class="col-12"><div id="calendario_e"></div></div><!--espera-->
