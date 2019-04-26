@@ -1,7 +1,9 @@
 <?php
     require 'conexion.php';
-    $fecha= date('Y-m-d');
+    date_default_timezone_set("UTC");
+    $fecha= date('Y-m-d');    
     $query = "SELECT * FROM citas WHERE estatus = 'Espera' and start like '%$fecha%'";
+
     $result = $mysqli->query($query);
     while($row=mysqli_fetch_array($result)){
         echo "<tr>".
