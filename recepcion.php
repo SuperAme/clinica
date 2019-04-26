@@ -28,7 +28,8 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 	<script type="text/javascript" src="js/recep.js"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/consulta.js"></script>
 	<script src="js/bootstrap-clockpicker.js"></script>
 </head>
 <body>   
@@ -46,7 +47,7 @@
      </ul>
   </div>
 </header>  
-	<div class="container">
+	<div class="container-fluid">
         <div class="row botones">
             <div class="col-12">
                 <button id="todos" class="btn">Todos</button>
@@ -59,7 +60,42 @@
             </div>
         </div>
     <div class="row">
-      <div class="col-12"><div id="calendario"></div></div>     
+      <div class="col-8"><div id="calendario"></div></div>
+      <div class="col-4">
+        <div class="row">
+            <div id="information">
+                <table class="table">
+                    <thead>
+                        <h2>Pacientes en Espera</h2>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Hora llegada</th>
+                            <th>Tiempo espera</th>
+                            <th>Hora cita</th>
+                        </tr>
+                    </thead>
+                    <tbody class="listc">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div id="information">
+                <table class="table">
+                    <thead>
+                        <h2>Pacientes en Consulta</h2>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>     
     </div>
     <div class="row">
         <div class="col-12"><div id="calendario_e"></div></div><!--espera-->
