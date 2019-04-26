@@ -2295,6 +2295,11 @@
             }else{
                 var horaActual
             }
+            if(minActual < 10){
+                var minActual = "0"+minActual
+            }else{
+                var minActual
+            }
             var HoraMin = horaActual+":"+(minActual)           
             var HoraMinA = HoraMin.replace(":","") 
             
@@ -2321,9 +2326,10 @@
                 if(hriA[0] > hrfA[0]){
                     alert("hora incorrecta")  
                 }else if(hriA[0] < HoraMinA){
+                    //console.log(hriA[0]+"---"+HoraMinA)
                     alert("hora incorrecta")  
                 }else{
-                    console.log("here")
+                    //console.log("here")
                     RecolectarDatosGUI();
                     EnviarInformacion('modificar',NuevoEvento);
                 }        

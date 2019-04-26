@@ -25,7 +25,7 @@ require 'conexionSAE.php';
 
 //seccion correo******************************************
 
-$mail = new PHPMailer;
+/*$mail = new PHPMailer;
 $mail->setFrom($from_email, $name);
 $mail->addAddress('beatamez@hotmail.com');
 $mail->addAddress('desarrollo@pass.com.mx');
@@ -38,11 +38,11 @@ $mail->IsSMTP();
 $mail->Host = "smtp.live.com";
 $mail->SMTPAuth = true;
 $mail->Username = 'beatamez@hotmail.com';
-$mail->Password = 'i28ujwr6pz';
+$mail->Password = '';
 //$mail->SMTPSecure = 'tls';
-$mail->Port = 587;
+$mail->Port = 587;*/
 
-/*$mail = new PHPMailer;
+$mail = new PHPMailer;
 $mail->setFrom($from_email, $name);
 $mail->addAddress('leonardo@pass.com.mx');
 $mail->Subject = $subject;
@@ -56,7 +56,7 @@ $mail->SMTPAuth = true;
 $mail->Username = 'contacto@pass.com.mx';
 $mail->Password = '4jsPVh4r8xhQ';
 //$mail->SMTPSecure = 'tls';
-$mail->Port = 26;*/
+$mail->Port = 26;
 
 
 

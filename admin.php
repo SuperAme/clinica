@@ -2523,7 +2523,7 @@
             EnviarInformacion('eliminar',NuevoEvento);
         });
         $("#modificarCita").click(function(){
-             months = ["01","02","03","04","05","06","07","08","09","10","11","12"]
+            months = ["01","02","03","04","05","06","07","08","09","10","11","12"]
             var fecha = new Date();
             var año = fecha.getFullYear()
             var mes = months[fecha.getMonth()]
@@ -2543,6 +2543,11 @@
             }else{
                 var horaActual
             }
+            if(minActual < 10){
+                var minActual = "0"+minActual
+            }else{
+                var minActual
+            }
             var HoraMin = horaActual+":"+(minActual)           
             var HoraMinA = HoraMin.replace(":","") 
             
@@ -2555,7 +2560,6 @@
             if (otherDay > today){
                 if(hriA[0] > hrfA[0]){
                     alert("Hora incorrecta")
-                    console.log("1")
                 }else{
                     console.log(hriA[0])
                     console.log(hrfA[0])
@@ -2564,15 +2568,13 @@
                 }
                 
             }else if(hriA[0] > hrfA[0]){
-                console.log("2")
+                                
                 alert("hora incorrecta")  
             }else if (otherDay = today) {
                 if(hriA[0] > hrfA[0]){
-                    console.log("3")
                     alert("hora incorrecta")  
                 }else if(hriA[0] < HoraMinA){
-                    //console.log("hora="+ HoraMinA)
-                    console.log("4")
+                    console.log(hriA[0]+"---"+HoraMinA)
                     alert("hora incorrecta")  
                 }else{
                     console.log("here")
