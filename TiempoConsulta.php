@@ -13,6 +13,7 @@
     $gestor = ibase_query($gestor_db,$sql);
     $row = ibase_fetch_object($gestor);    
     $duracionServicio =  $row->DURACION;
+    echo $duracionServicio;
 
     //$sql = "INSERT INTO tiempoconsulta(id,idCita,duracion,tiempo)VALUES ('','$id','$duracionServicio',)";
     

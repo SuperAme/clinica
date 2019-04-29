@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2019 a las 22:26:06
--- Versión del servidor: 10.1.30-MariaDB
--- Versión de PHP: 7.2.2
+-- Tiempo de generación: 29-04-2019 a las 18:26:53
+-- Versión del servidor: 10.1.29-MariaDB
+-- Versión de PHP: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -52,26 +52,72 @@ CREATE TABLE `citas` (
 --
 
 INSERT INTO `citas` (`id`, `title`, `doctor`, `doctor_asignado`, `enfermera`, `start`, `end`, `materiales`, `duracion`, `estatus`, `servicio`, `cubiculo`, `color`, `hora_agr`, `razon_social`, `tiempo_espera`) VALUES
-(223, 'Esther Sanchez', 'Doctor1', 'Doctor1', 'Enfermera2', '2019-03-14 11:02:00', '2019-03-14 17:04:00', NULL, NULL, 'Terminada', 'Servicio Medico2', '10', '#6D6E71', '2019-03-13 11:0:24', 'Cliente de muestra7', NULL),
-(224, 'Consuelo Bonilla', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-14 11:30:00', '2019-03-14 17:09:00', NULL, NULL, 'Terminada', 'Servicio Medico2', '7', '#6D6E71', '2019-03-13 11:5:59', 'Cliente de muestra6', NULL),
-(225, 'Esteban Perez', 'Doctor1', '', 'Enfermera2', '2019-03-14 17:00:00', '2019-03-14 18:00:00', NULL, NULL, 'Confirmado', 'Servicio Medico1', '12', '#04879c', '2019-03-13 16:0:56', 'Cliente de muestra2', NULL),
-(227, 'Consuelo Sanchez', 'Doctor1', '', 'Enfermera1', '2019-03-13 16:30:00', '2019-03-13 16:40:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '12', '#6D6E71', '2019-03-13 16:28:19', 'Cliente de muestra4', '16:28:44'),
-(228, 'Esteban Perez', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-14 11:00:00', '2019-03-14 12:00:00', NULL, NULL, 'Generado', 'Servicio Medico1', '5', '#bd05e5', '2019-03-13 19:28:8', 'Cliente de muestra2', NULL),
-(229, 'Olivia Campos', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-13 19:40:00', '2019-03-13 20:28:00', NULL, NULL, 'Terminada', 'Servicio Medico5', '3', '#6D6E71', '2019-03-13 19:29:37', 'Cliente de muestra8', '19:32:19'),
-(231, 'Josefina Landarte', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-22 19:00:00', '2019-03-22 13:30:00', NULL, NULL, 'Terminada', 'Servicio Medico4', '6', '#6D6E71', '2019-03-13 19:52:16', 'Cliente de muestra5', '09:27:33'),
-(232, 'Veonica Aparicio', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-22 22:00:00', '2019-03-22 23:00:00', NULL, NULL, 'Generado', 'Servicio Medico1', '15', '#bd05e5', '2019-03-13 21:15:45', 'Cliente de muestra15', NULL),
-(233, 'Josefina Landarte', 'Doctor1', 'Doctor2', 'Enfermera1', '2019-03-15 09:57:00', '2019-03-15 10:03:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '10', '#6D6E71', '2019-03-13 22:0:8', 'Cliente de muestra5', '09:56:27'),
-(236, 'Alma Ruiz', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-14 16:00:00', '2019-03-14 17:03:00', NULL, NULL, 'Terminada', 'Servicio Medico2', '9', '#6D6E71', '2019-03-14 15:57:15', 'Cliente de muestra12', '16:39:15'),
-(238, 'Alma Ruiz', 'Doctor1', 'Doctor2', 'Enfermera1', '2019-03-14 17:00:00', '2019-03-14 18:00:00', NULL, NULL, 'Generado', 'Servicio Medico4', '12', '#bd05e5', '2019-03-14 16:36:46', 'Cliente de muestra12', NULL),
-(239, 'Griselda Ramirez', 'Doctor1', 'Doctor3', 'Enfermera1', '2019-03-22 15:00:00', '2019-03-22 16:00:00', NULL, NULL, 'Consulta', 'Servicio Medico3', '10', '#f0671f', '2019-03-14 18:38:41', 'Cliente de muestra14', '13:33:18'),
-(240, 'Alma Ruiz', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-20 19:00:00', '2019-03-20 20:00:00', NULL, NULL, 'Generado', 'Servicio Medico1', '11', '#bd05e5', '2019-03-14 18:39:19', 'Cliente de muestra12', NULL),
-(241, 'Viviana Palacios', 'Doctor1', 'Doctor1', 'Enfermera1', '2019-03-15 12:00:00', '2019-03-15 11:16:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '1', '#6D6E71', '2019-03-15 11:10:10', 'Cliente de muestra3', '11:10:35'),
-(242, 'Esteban Perez', 'Doctor3', '', 'Enfermera2', '2019-03-22 11:00:00', '2019-03-22 12:00:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '5', '#f0671f', '2019-03-19 10:33:22', 'Cliente de muestra2', '13:8:13'),
-(243, 'Consuelo Sanchez', 'Doctor2', 'Doctor3', 'Enfermera2', '2019-03-22 13:00:00', '2019-03-22 14:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '10', '#bd05e5', '2019-03-22 12:54:58', 'Cliente de muestra4', NULL),
-(245, 'Consuelo Bonilla', 'Doctor1', '', 'Enfermera1', '2019-03-28 13:00:00', '2019-03-28 13:51:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '2', '#6D6E71', '2019-03-25 12:50:16', 'Cliente de muestra6', '12:50:22'),
-(247, 'Claudia Cortes', 'Doctor1', '', 'Enfermera2', '2019-03-28 17:00:00', '2019-03-28 18:00:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '9', '#f0671f', '2019-03-25 16:31:22', 'Cliente de muestra9', '16:31:29'),
-(248, 'Consuelo Sanchez', 'Doctor1', 'Doctor2', 'Enfermera1', '2019-03-28 14:00:00', '2019-03-28 15:00:00', NULL, NULL, 'Generado', 'Servicio Medico1', '8', '#ef8cf9', '2019-03-26 13:3:8', 'Cliente de muestra4', NULL),
-(249, 'Olivia Campos', 'Doctor1', '', 'Enfermera1', '2019-03-28 18:00:00', '2019-03-28 18:42:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '2', '#6D6E71', '2019-03-28 17:25:45', 'Cliente de muestra8', '17:25:52');
+(206, 'ANTONIO MENESES', 'doctor2', '', 'enfermera1', '2019-03-12 18:00:00', '2019-03-12 18:30:00', NULL, NULL, 'Espera', 'SERVICIOS DE FACTURACION', '3', '#0c6f0f', '2019-03-11 10:3:36', 'SCHWEIZER BIOCHEMIE S.A DE C.V', NULL),
+(207, 'PEPE PECAS', 'doctor2', '', 'enfermera1', '2019-03-11 11:00:00', '2019-03-11 12:00:00', NULL, NULL, 'Terminada', 'SERVICIOS DE FACTURACION', '2', '#6D6E71', '2019-03-11 10:4:12', 'SCHWEIZER BIOCHEMIE S.A DE C.V', NULL),
+(241, 'ANTONIO MENESES', 'doctor2', '', 'enfermera1', '2019-03-12 17:00:00', '2019-03-12 17:47:00', NULL, NULL, 'Terminada', 'PAQUETERIA', '6', '#6D6E71', '2019-03-12 17:45:0', 'SCHWEIZER BIOCHEMIE S.A DE C.V', NULL),
+(265, 'Esther Sanchez', 'doctor2', '', 'enfermera1', '2019-03-23 12:00:00', '2019-03-23 13:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '8', '#ef8cf9', '2019-03-14 11:59:18', 'Cliente de muestra9', NULL),
+(274, 'Claudia Cortes', 'doctor2', '', 'enfermera1', '2019-03-22 17:00:00', '2019-03-22 13:31:00', NULL, NULL, 'Terminada', 'Servicio Medico2', '7', '#6D6E71', '2019-03-14 16:59:35', 'Cliente de muestra9', '16:59:41'),
+(282, 'Claudia Cortes', 'doctor2', '', 'enfermera2', '2019-03-15 13:00:00', '2019-03-15 16:00:00', NULL, NULL, 'Espera', 'Servicio Medico2', '5', '#0c6f0f', '2019-03-15 9:47:55', 'Cliente de muestra9', '09:48:53'),
+(283, 'Claudia Cortes', 'doctor2', '', 'enfermera2', '2019-03-15 09:50:00', '2019-03-15 11:00:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '5', '#f0671f', '2019-03-15 9:47:55', 'Cliente de muestra9', '10:20:36'),
+(286, 'Claudia Cortes', 'doctor2', '', 'enfermera2', '2019-03-15 09:50:00', '2019-03-15 11:00:00', NULL, NULL, 'Confirmado', 'Servicio Medico2', '5', '#04879c', '2019-03-15 9:47:55', 'Cliente de muestra9', NULL),
+(287, 'Claudia Cortes', 'doctor2', '', 'enfermera2', '2019-03-15 09:50:00', '2019-03-15 11:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '5', '#ef8cf9', '2019-03-15 9:47:55', 'Cliente de muestra9', NULL),
+(288, 'Claudia Cortes', 'doctor2', 'doctor2', 'enfermera2', '2019-03-23 09:50:00', '2019-03-23 11:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '5', '#ef8cf9', '2019-03-15 9:47:55', 'Cliente de muestra9', NULL),
+(289, 'Claudia Cortes', 'doctor2', '', 'enfermera2', '2019-03-15 09:50:00', '2019-03-15 11:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '5', '#ef8cf9', '2019-03-15 9:47:55', 'Cliente de muestra9', NULL),
+(290, 'Consuelo Sanchez', 'doctor4', 'doctor2', 'enfermera3', '2019-03-29 10:55:00', '2019-03-29 12:00:00', NULL, NULL, 'Confirmado', 'Servicio Medico3', '2', '#04879c', '2019-03-19 11:49:44', 'Cliente de muestra4', NULL),
+(291, 'Consuelo Bonilla', 'doctor3', '', 'enfermera2', '2019-03-21 12:00:00', '2019-03-21 13:00:00', NULL, NULL, 'Espera', 'Servicio Medico2', '3', '#0c6f0f', '2019-03-19 11:59:35', 'testing', '15:55:22'),
+(319, 'Claudia Cortes', 'doctor2', 'doctor2', 'enfermera2', '2019-03-22 18:00:00', '2019-03-22 18:30:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '11', '#f0671f', '2019-03-21 16:47:45', NULL, '16:47:51'),
+(320, 'Consuelo Bonilla', 'doctor2', 'doctor2', 'enfermera2', '2019-03-22 17:00:00', '2019-03-22 18:00:00', NULL, NULL, 'Generado', 'Servicio Medico2', '7', '#bd05e5', '2019-03-21 16:58:7', 'testing', NULL),
+(321, 'Claudia Cortes', 'doctor2', 'doctor2', 'enfermera2', '2019-03-21 18:00:00', '2019-03-21 18:30:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '11', '#f0671f', '2019-03-21 16:47:45', NULL, '16:47:51'),
+(322, 'Claudia Cortes', 'doctor2', 'doctor2', 'enfermera2', '2019-03-21 18:00:00', '2019-03-21 18:30:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '11', '#f0671f', '2019-03-21 16:47:45', NULL, '16:47:51'),
+(323, 'Claudia Cortes', 'doctor2', 'doctor2', 'enfermera2', '2019-03-21 18:00:00', '2019-03-21 18:30:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '11', '#f0671f', '2019-03-21 16:47:45', NULL, '16:47:51'),
+(328, 'Claudia Cortes', 'doctor2', '', 'enfermera1', '2019-03-25 13:00:00', '2019-03-25 14:00:00', NULL, NULL, 'Consulta', 'Servicio Medico1', '5', '#f0671f', '2019-03-25 12:40:43', 'Cliente de muestra9', '12:40:48'),
+(329, 'Alma Ruiz', 'doctor3', '', 'enfermera3', '2019-03-28 18:10:00', '2019-03-28 19:25:00', NULL, NULL, 'Generado', 'Servicio Medico1', '2', '#ef8cf9', '2019-03-28 9:31:58', 'Cliente de muestra12', NULL),
+(330, 'Consuelo Sanchez', 'doctor2', '', 'enfermera1', '2019-03-28 17:15:00', '2019-03-28 18:15:00', NULL, NULL, 'Terminada', 'Servicio Medico1', '8', '#6D6E71', '2019-03-28 9:32:23', 'Cliente de muestra4', '09:32:31'),
+(331, 'Consuelo Bonilla', 'doctor3', '', 'enfermera1', '2019-04-29 15:00:00', '2019-04-29 16:00:00', NULL, NULL, 'Consulta', 'Servicio Medico2', '10', '#f0671f', '2019-04-26 14:50:22', 'Cliente de muestra6', '15:59:34'),
+(332, 'Guadalupe islas', 'doctor2', '', 'enfermera1', '2019-04-29 17:00:00', '2019-04-29 18:00:00', NULL, NULL, 'Espera', 'Servicio Medico1', '8', '#0c6f0f', '2019-04-26 16:25:35', 'Cliente de muestra11', '16:27:31');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `log`
+--
+
+CREATE TABLE `log` (
+  `usuario` text COLLATE utf8_bin NOT NULL,
+  `accion` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Volcado de datos para la tabla `log`
+--
+
+INSERT INTO `log` (`usuario`, `accion`) VALUES
+(' admin1        ', 'nada'),
+(' admin1        ', 'InsertÃ³ cita con folio , el dÃ­a 2019-03-20 16:55:10'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:47:45'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:47:48'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:47:51'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:54:19'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:54:28'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:55:39'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 16:57:24'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:0:59'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:10:9'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:10:15'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:11:20'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:15:4'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:42:18'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:31'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:34'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:36'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:38'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:41'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:42'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:44'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:43:47'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:53:16'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-21 17:57:1'),
+(' admin1        ', 'Inserto cita del paciente Claudia Cortes, el dia 2019-03-22 17:12:12');
 
 -- --------------------------------------------------------
 
@@ -96,63 +142,66 @@ CREATE TABLE `materiales` (
 --
 
 INSERT INTO `materiales` (`clave`, `descrip`, `obs`, `precio`, `precio_sug`, `cantidad`, `subtotal`, `id_cita`, `paciente`) VALUES
+('BDT1060', 'TADALAFIL/DAPOXETINA 2.5-10/60 MG 10/CAP', '', 640, '', 2, 1280, 199, 'PEPE PECAS'),
 ('BDP1030', 'TADALAFIL/DAPOXETINA 2.5-10/30 MG 10/CAP', '', 525, '525', 1, 525, 204, 'ANTONIO MENESES'),
 ('BDT2030', 'DAPOXETINA/TADALAFIL 30/20 10/CAP', '', 585, '585', 1, 585, 204, 'ANTONIO MENESES'),
 ('SERV-PAGO', 'SERVICIOS DE FACTURACION', '', 500, '0', 2, 1000, 205, 'ANTONIO MENESES'),
 ('ALS.1', 'ANASTRAZOL 0.1 MG', '', 600, '599', 2, 1200, 205, 'ANTONIO MENESES'),
 ('ALS.1', 'ANASTRAZOL 0.1 MG', 'obs1', 599, '599', 3, 1797, 207, 'PEPE PECAS'),
 ('CT100', 'TESTOSTERONA 100 MG', '', 499, '499', 3, 1497, 207, 'PEPE PECAS'),
-('AA-01', 'HONORARIOS MEDICOS', '', 2000, '1000', 3, 6000, 192, 'AMERICO'),
-('ABRAFLEXFIN', 'ESPONJA SOFTBACK FINO GRANO DE 320 A 400', 'obs', 50, '50', 1, 50, 197, 'AMERICO'),
-('TUERCAHEXCL8', 'TUERCA HEXAGONAL CL8 8PZ, 8,12,10,16', 'obs', 0, '0', 1, 0, 197, 'AMERICO'),
-('AA-01', 'HONORARIOS MEDICOS', 'obs', 1500, '1000', 1, 1500, 197, 'AMERICO'),
-('AA-02', 'PRODUCTO 1', 'obs', 100, '100', 1, 100, 198, 'Juan Carlos'),
-('AA-03', 'PRODUCTO 2', 'obs 2', 100, '100', 1, 100, 198, 'Juan Carlos'),
-('AA-01', 'HONORARIOS MEDICOS', 'ob', 2000, '1000', 1, 2000, 198, 'Juan Carlos'),
-('ABRAZINOX', 'ABRAZADERA SERIE PESADA INOX. 25-40MM', 'obs', 60, '60', 1, 60, 199, 'LEONARDO SOTO'),
-('ALIBCACIGC', 'ALICATE DE MONTAJE CURVO BOCA CIGÜEÑA', 'obs', 200, '200', 1, 200, 199, 'LEONARDO SOTO'),
-('CAMIS-CHI-CAF', 'CAMISA CABALLERO CHICA CAFE', 'obs', 0, '0', 1, 0, 200, 'Luis Perez'),
-('AA-03', 'PRODUCTO 2', 'obs', 100, '100', 1, 100, 200, 'Luis Perez'),
-('AA-01', 'HONORARIOS MEDICOS', 'obs', 2500, '1000', 1, 2500, 200, 'Luis Perez'),
-('Hon-Med01', 'Honorarios Medicos', 'fhgfgh', 2000, '2000', 1, 2000, 212, 'Consuelo Sanchez'),
-('Apli3', 'Aplicacion Serv3', '', 300, '300', 2, 600, 212, 'Consuelo Sanchez'),
-('Apli4', 'Aplicacion Serv4', '', 400, '300', 3, 1200, 212, 'Consuelo Sanchez'),
-('Serv3', 'Servicio Medico3', '', 200, '200', 2, 400, 213, 'Consuelo Bonilla'),
-('Serv3', 'Servicio Medico3', '', 200, '200', 2, 400, 213, 'Consuelo Bonilla'),
-('Apli3', 'Aplicacion Serv3', '', 600, '300', 3, 1800, 213, 'Consuelo Bonilla'),
-('Kit2', 'Kit de P/S-2', '', 0, '0', 1, 0, 211, 'Esteban Perez'),
-('Apli2', 'Aplicacion Serv2', '', 300, '300', 1, 300, 218, 'Consuelo Bonilla'),
-('Kit1', 'Kit de P/S-1', 'fwsfsfs', 1000, '1000', 2, 2000, 221, 'Consuelo Bonilla'),
-('Kit1', 'Kit de P/S-1', '', 1000, '1000', 1, 1000, 222, 'Consuelo Bonilla'),
-('Prod1', 'Producto Medico1', '', 100, '100', 1, 100, 227, 'Consuelo Sanchez'),
-('Apli1', 'Aplicacion Serv1', '', 5, '300', 1, 5, 227, 'Consuelo Sanchez'),
-('Apli1', 'Aplicacion Serv1', 'obs de part', 300, '300', 1, 300, 229, 'Olivia Campos'),
-('Kit1', 'Kit de P/S-1', 'obs', 1000, '1000', 1, 1000, 229, 'Olivia Campos'),
-('Hon-Med01', 'Honorarios Medicos', 'obs del doc', 2500, '2000', 1, 2500, 229, 'Olivia Campos'),
-('Apli1', 'Aplicacion Serv1', '1', 300, '300', 1, 300, 223, 'Esther Sanchez'),
-('Serv1', 'Servicio Medico1', '1', 200, '200', 100, 20000, 224, 'Consuelo Bonilla'),
-('Kit2', 'Kit de P/S-2', '', 0, '0', 90, 0, 224, 'Consuelo Bonilla'),
-('Kit1', 'Kit de P/S-1', 'obs1', 1000, '1000', 2, 2000, 233, 'Josefina Landarte'),
-('Apli2', 'Aplicacion Serv2', 'obs 2', 300, '300', 3, 900, 233, 'Josefina Landarte'),
-('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 1, 2000, 233, 'Josefina Landarte'),
-('Apli1', 'Aplicacion Serv1', '', 300, '300', 1, 300, 241, 'Viviana Palacios'),
-('Prod2', 'Producto Medico1', '', 100, '100', 1, 100, 241, 'Viviana Palacios'),
-('Kit1', 'Kit de P/S-1', '', 1000, '1000', 3, 3000, 241, 'Viviana Palacios'),
-('Hon-Med01', 'Honorarios Medicos', 'ok', 5000, '2000', 3, 15000, 241, 'Viviana Palacios'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 1, 300, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 1, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 1, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 300, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 1, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 300, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 300, 235, 'Esteban Perez'),
-('Apli1', 'Aplicacion Serv1', 'OBS', 300, '300', 300, 300, 235, 'Esteban Perez'),
-('Prod2', 'Producto Medico1', '', 100, '100', 1, 100, 231, 'Josefina Landarte'),
-('Serv1', 'Servicio Medico1', '', 200, '200', 1, 200, 231, 'Josefina Landarte'),
-('Apli2', 'Aplicacion Serv2', '', 300, '300', 2, 600, 245, 'Consuelo Bonilla'),
-('Hon-Med01', 'Honorarios Medicos', 'mis honorarios', 2000, '2000', 1, 2000, 247, 'Claudia Cortes'),
-('Apli2', 'Aplicacion Serv2', '', 300, '300', 2, 600, 249, 'Olivia Campos'),
-('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 2, 4000, 249, 'Olivia Campos');
+('ALS.25', 'ANASTRAZOL 0.25 MG', 'hey', 699, '699', 5, 3495, 234, 'ANTONIO MENESES'),
+('ALS.25', 'ANASTRAZOL 0.25 MG', '', 699, '699', 2, 1398, 219, 'ANTONIO MENESES'),
+('BD60', 'DAPOXETINA 60 MG 10/CAP', '', 559, '559', 2, 1118, 235, 'ANTONIO MENESES'),
+('BD30', 'DAPOXETINA 30 MG', '', 600, '499', 2, 1200, 235, 'ANTONIO MENESES'),
+('ALS.1', 'ANASTRAZOL 0.1 MG', '', 599, '599', 1, 599, 240, 'ANTONIO MENESES'),
+('SERV-PAGO', 'SERVICIOS DE FACTURACION', '', 0, '0', 2, 0, 240, 'ANTONIO MENESES'),
+('BDP1030', 'TADALAFIL/DAPOXETINA 2.5-10/30 MG 10/CAP', '', 525, '525', 1, 525, 241, 'ANTONIO MENESES'),
+('ALS.5', 'ANASTRAZOL 0.5 MG', '', 799, '799', 2, 1598, 241, 'ANTONIO MENESES'),
+('CD50', 'DHEA 50 MG', '', 549, '549', 3, 1647, 241, 'ANTONIO MENESES'),
+('BD60', 'DAPOXETINA 60 MG 10/CAP', '', 600, '559', 4, 2400, 241, 'ANTONIO MENESES'),
+('KIT1', 'DESCR KIT 1', '', 500, '500', 3, 1500, 244, 'PEPE PECAS'),
+('DC100', 'DHEA 51-100 MG/G', '', 600, '599', 2, 1200, 244, 'PEPE PECAS'),
+('DC100', 'DHEA 51-100 MG/G', '', 600, '599', 2, 1200, 247, 'ANTONIO MENESES'),
+('Hon-Med01', 'Honorarios Medicos', '', 3000, '2000', 2, 6000, 249, 'Claudia Cortes'),
+('Apli1', 'Aplicacion Serv1', '', 600, '300', 2, 1200, 250, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', '', 600, '300', 2, 1200, 251, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', '', 300, '300', 2, 600, 252, 'Veonica Aparicio'),
+('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 1, 2000, 252, 'Veonica Aparicio'),
+('Apli2', 'Aplicacion Serv2', '', 600, '300', 2, 1200, 264, 'Veonica Aparicio'),
+('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 1, 2000, 264, 'Veonica Aparicio'),
+('Apli3', 'Aplicacion Serv3', '', 500, '300', 2, 1000, 256, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', '', 350, '300', 2, 700, 257, 'Claudia Cortes'),
+('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 1, 2000, 257, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', '', 700, '300', 40, 28000, 266, 'Claudia Cortes'),
+('Kit1', 'Kit de P/S-1', '', 1000, '1000', 3, 3000, 267, 'Claudia Cortes'),
+('Apli4', 'Aplicacion Serv4', '', 300, '300', 2, 600, 268, 'Claudia Cortes'),
+('Kit2', 'Kit de P/S-2', '', 100, '0', 2, 200, 269, 'Claudia Cortes'),
+('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 2, 4000, 275, 'Claudia Cortes'),
+('Apli3', 'Aplicacion Serv3', '', 300, '300', 2, 600, 275, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', 'ge', 300, '300', 2, 600, 276, 'Silvia Linares'),
+('Apli2', 'Aplicacion Serv2', '', 300, '300', 1, 300, 277, 'Silvia Linares'),
+('Apli3', 'Aplicacion Serv3', '', 300, '300', 2, 450, 278, 'Silvia Linares'),
+('Apli4', 'Aplicacion Serv4', '', 300, '300', 3, 900, 279, 'Silvia Linares'),
+('Apli3', 'Aplicacion Serv3', '', 300, '300', 2, 600, 280, 'Silvia Linares'),
+('Apli2', 'Aplicacion Serv2', '', 300, '300', 2, 600, 274, 'Claudia Cortes'),
+('Hon-Med01', 'Honorarios Medicos', '', 2000, '2000', 1, 2000, 324, 'Claudia Cortes'),
+('Apli2', 'Aplicacion Serv2', '', 300, '300', 1, 300, 325, 'Josefina Landarte'),
+('Apli2', 'Aplicacion Serv2', '', 300, '300', 1, 300, 327, 'Claudia Cortes'),
+('Prod4', 'Producto Medico4', '', 100, '100', 1, 100, 328, 'Claudia Cortes');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tiempoconsulta`
+--
+
+CREATE TABLE `tiempoconsulta` (
+  `id` int(10) NOT NULL,
+  `idCita` int(10) NOT NULL,
+  `duracion_servicio` text COLLATE utf8_bin NOT NULL,
+  `hora_inicio` text COLLATE utf8_bin NOT NULL,
+  `hora_fin` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -179,7 +228,7 @@ CREATE TABLE `usuarios` (
   `delegacion` text COLLATE utf8_bin,
   `estado` text COLLATE utf8_bin,
   `codigo_postal` text COLLATE utf8_bin,
-  `comision` text COLLATE utf8_bin NOT NULL
+  `comision` text COLLATE utf8_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -187,23 +236,28 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre_usuario`, `contraseña`, `nombre`, `apellidoM`, `apellidoP`, `rfc`, `correo`, `telefono1`, `telefono2`, `tipo`, `direccion`, `colonia`, `numero_exterior`, `numero_interior`, `delegacion`, `estado`, `codigo_postal`, `comision`) VALUES
-(3, 'Admin1', 'pass', 'adm', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', ''),
-(37, 'Recepcion1', 'pass', 'Recepcion1', '', '', '', '', 0, 0, 'R', '', '', 0, 0, '', '', '', ''),
-(38, 'Doctor1', 'pass', 'Doctor1', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', ''),
-(39, 'Enfermera1', 'pass', 'Enfermera1', '', '', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', ''),
-(40, 'admin2', 'pass', 'administrador2', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', ''),
-(41, 'Enfermera2', 'pass', 'Enfermera2', '', '', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', ''),
-(42, 'Doctor2', 'pass', 'Doctor2', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', ''),
-(43, 'recepcion3', 'pass', 'recepcion', '', '', '', '', 0, 0, 'R', '', '', 0, 0, '', '', '', ''),
-(44, 'admin0', 'qwerty', 'admin0', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', ''),
-(45, 'Doctor3', 'pass', 'Doctor3', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', ''),
-(46, 'Doctor4', 'pass', 'Doctor4', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', ''),
-(47, 'Doctor5', 'pass', 'Doctor5', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', ''),
-(48, 'Enfermera3', 'pass', 'Enfermera3', '', '', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', ''),
-(49, 'Enfermera4', 'pass', 'Enfermera4', '', '', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', ''),
-(50, 'Enfermera5', 'pass', 'Enfermera5', '', '', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', ''),
-(51, 'Residente1', 'pass', 'Residente1', '', '', '', '', 0, 0, 'S', '', '', 0, 0, '', '', '', ''),
-(52, 'petra', 'petra', 'petra', '', 'petrinzki', '', '', 0, 0, 'R', '', '', 0, 0, '', '', '', '20');
+(1, 'doctorperez', 'pass', 'doctorjuan', '', '', '', '', 0, 0, 'D', '', '', 0, 0, '', '', '', NULL),
+(2, 'recepcion1', 'pass', 'l', '', '', '', '', 0, 0, 'R', '', '', 0, 0, '', '', '', NULL),
+(3, 'admin1', 'pass', '', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', NULL),
+(4, 'Maximiliano', 'doctor', 'perez', 'materno', 'xx0x0x0x0xxx', 'correo', '45896532', 2147483647, 0, 'D', 'colonia', '64', 14, 0, 'edomex', '15020', 'nose', NULL),
+(5, 'DOCTOR2', 'doctor', 'doctor2', 'materno', 'xx0x0x0x0xxx', 'correo', '45896532', 2147483647, 0, 'D', 'colonia', '64', 14, 0, 'edomex', '15020', 'nose', NULL),
+(6, 'DOCTOR3', 'doctor3', 'doctor3', 'materno', 'xx0x0x0x0xxx', 'correo', '45896532', 2147483647, 0, 'D', 'colonia', '64', 14, 0, 'edomex', '15020', 'nose', NULL),
+(7, 'DOCTOR4', 'doctor4', 'doctor4', 'materno', 'xx0x0x0x0xxx', 'correo', '45896532', 2147483647, 0, 'D', 'colonia', '64', 14, 0, 'edomex', '15020', 'nose', '50'),
+(8, 'enfermera1', 'pass', 'enfermera1', 'APE', 'APE2', 'X01X0000X', 'DADADADA', 45789562, 265984787, 'E', 'S/M', 'SSASA', 64, 48, 'FDSDSF', 'FDSFDS', '15020', NULL),
+(9, 'enfermera2', 'pass', 'enfermera2', 'APE', 'APE2', 'X01X0000X', 'DADADADA', 45789562, 265984787, 'E', 'S/M', 'SSASA', 64, 48, 'FDSDSF', 'FDSFDS', '15020', '15'),
+(10, 'enfermera3', 'pass', 'enfermera3', 'APE', 'APE2', 'X01X0000X', 'DADADADA', 45789562, 265984787, 'E', 'S/M', 'SSASA', 64, 48, 'FDSDSF', 'FDSFDS', '15020', NULL),
+(11, 'doc5', 'doc5', 'doc5', 'doc5', 'doc5', 'doc5', 'doc5@ddd.com', 4578, 4589, 'D', '45', 'doc5', 65, 54, 'doc5', 'doc5', '15202', NULL),
+(12, 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 589652, 15489562, 'A', '71', 'admin2', 56, 48, 'admin2', 'admin2', '15489', NULL),
+(13, 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 'admin2', 589652, 15489562, 'A', '71', 'admin2', 56, 48, 'admin2', 'admin2', '15489', NULL),
+(15, 'test', '45', '22', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', NULL),
+(16, 'resident', 'evil', 'claire', '', 'redfield', '', '', 0, 0, 'S', '', '', 0, 0, '', '', '', ''),
+(20, 'test', 'test', 'set', '', 'tes', '', '', 0, 0, 'E', '', '', 0, 0, '', '', '', '5'),
+(21, 'Residente1', 'pass', 'residente', '', '', '', '', 0, 0, 'S', '', '', 0, 0, '', '', '', ''),
+(22, 'Residente2', 'pass', 'Juan', '', '', '', '', 0, 0, 'S', '', '', 0, 0, '', '', '', ''),
+(23, 'a', 'a', 'a', 'a', 'a', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', 'iuhoiuhg'),
+(24, 'te', 'te', 'te', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', ''),
+(25, 'ame', 'pass', 'ame', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', '13'),
+(26, 'testt', 'testt', 'testt', '', '', '', '', 0, 0, 'A', '', '', 0, 0, '', '', '', '0');
 
 --
 -- Índices para tablas volcadas
@@ -213,6 +267,12 @@ INSERT INTO `usuarios` (`id`, `nombre_usuario`, `contraseña`, `nombre`, `apelli
 -- Indices de la tabla `citas`
 --
 ALTER TABLE `citas`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tiempoconsulta`
+--
+ALTER TABLE `tiempoconsulta`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -229,13 +289,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `citas`
 --
 ALTER TABLE `citas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=250;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=333;
+
+--
+-- AUTO_INCREMENT de la tabla `tiempoconsulta`
+--
+ALTER TABLE `tiempoconsulta`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
