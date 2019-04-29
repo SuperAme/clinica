@@ -2512,11 +2512,13 @@
         });
         $("#modificarCitaTest").click(function(){
           var id = $("#input_id").val()
-          var servicio = $("#input_servicio").val()          
+          var servicio = $("#input_servicio").val()  
+          var d = new Date()
+          var hora = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()          
           $.ajax({
             url: 'TiempoConsulta.php',
             type: 'POST',
-            data: {"id":id,"servicio":servicio},
+            data: {"id":id,"servicio":servicio,"hora":hora},
             /*dataType: 'html',*/  
             success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve            
                 console.log(response)
