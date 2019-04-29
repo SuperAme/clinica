@@ -4,7 +4,7 @@
     $id = $_POST['id'];
     $servicio = $_POST['servicio'];
     $hora = $_POST['hora'];
-    echo $hora."<br/>";
+    //echo $hora."<br/>";
     
     $sql = "SELECT  IC.CAMPLIB1 AS DURACION FROM INVE01 IV
                 LEFT JOIN INVE_CLIB01 IC ON IC.CVE_PROD = IV.CVE_ART
@@ -18,7 +18,7 @@
     $segundosMa = $duracionServicio*60;    
 
     $nueva = date("H:i",$segundosHi+$segundosMa);
-    
+    echo $nueva;
 
     //$sql = "INSERT INTO tiempoconsulta(id,idCita,duracion,tiempo)VALUES ('','$id','$duracionServicio',)";
     
