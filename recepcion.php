@@ -48,7 +48,7 @@
      </ul>
   </div>
 </header>  
-	<div class="container-fluid">
+	<div class="container">
         <div class="row botones">
             <div class="col-12">
                 <button id="todos" class="btn">Todos</button>
@@ -61,44 +61,7 @@
             </div>
         </div>
     <div class="row">
-      <div class="col-8"><div id="calendario"></div></div>
-      <div class="col-4">
-        <div class="row">
-            <div id="information">
-                <table class="table">
-                    <thead>
-                        <h2>Pacientes en Espera</h2>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Hora llegada</th>
-                            <th>Tiempo espera</th>
-                            <th>Hora cita</th>
-                        </tr>
-                    </thead>
-                    <tbody class="listc">
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="row">
-            <div id="information">
-                <table class="table">
-                    <thead>
-                        <h2>Pacientes en Consulta</h2>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Cubículo</th>
-                            <th>Servicio</th>
-                        </tr>
-                    </thead>
-                    <tbody class="liste">
-                        
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>     
+        <div class="col-12"><div id="calendario"></div></div>          
     </div>
     <div class="row">
         <div class="col-12"><div id="calendario_e"></div></div><!--espera-->
