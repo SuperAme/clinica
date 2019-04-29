@@ -2514,7 +2514,20 @@
           var id = $("#input_id").val()
           var servicio = $("#input_servicio").val()  
           var d = new Date()
-          var hora = d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()          
+          var minutes = d.getMinutes()
+          if (minutes < 10){
+            minutes = "0"+minutes
+          }else{
+            minutes
+          }
+          var h = d.getHours()
+          if (h < 10){
+            h = "0"+h
+          }else{
+            h
+          }
+          var hora = h +':'+minutes  
+              
           $.ajax({
             url: 'TiempoConsulta.php',
             type: 'POST',
